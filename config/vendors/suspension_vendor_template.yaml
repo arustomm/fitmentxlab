@@ -1,0 +1,30 @@
+# Suspension / Lift Kit Vendor CSV Column Mapping Template
+vendor_name: "My Suspension Vendor"
+product_type: suspension
+
+columns:
+  sku: "Part Number"
+  brand: "Brand"
+  title: "Product Name"
+  cost: "Dealer Cost"
+  quantity: "QTY"
+
+  lift_height: "Lift Height"    # e.g. "4 inch", "3\""
+  part_type: "Kit Type"         # e.g. "Leveling Kit", "Lift Kit", "Shock Absorber"
+
+  upc: "UPC"
+  mpn: "Part Number"
+  msrp: "MSRP"
+  map_price: "MAP"
+  description: "Description"
+  images: "Image URL"
+
+  fitment_text: "Fitment"
+  fitment_year: "Year"
+  fitment_make: "Make"
+  fitment_model: "Model"
+  fitment_trim: "Trim"
+  fitment_engine: "Engine"
+
+overrides:
+  warranty: "Limited Lifetime Warranty"

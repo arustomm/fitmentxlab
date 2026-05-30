@@ -1,0 +1,67 @@
+# eBay Bulk Uploader — Main Settings
+# Copy this to config/settings.yaml and fill in your values.
+# Credentials go in .env (never commit that file).
+
+ebay:
+  environment: sandbox        # "sandbox" or "production"
+  site_id: 0                  # 0 = eBay.com US
+  currency: USD
+  country: US
+  dispatch_days: 3            # handling time in business days
+  listing_duration: GTC       # GTC = Good 'Til Cancelled
+
+  # These IDs come from your seller account → Selling Preferences → Policies
+  # Run:  python main.py get-policies   to list them
+  fulfillment_policy_id: ""
+  payment_policy_id: ""
+  return_policy_id: ""
+
+  # Payment — required for Fixed Price listings on the Trading API
+  paypal_email: ""            # or pull from env: ${EBAY_PAYPAL_EMAIL}
+
+  return_policy:
+    returns_accepted: true
+    refund: MoneyBack
+    returns_within: Days_30
+    shipping_paid_by: Buyer
+
+  shipping:
+    type: Flat                # Flat | Calculated | FreeSHipping
+    service: UPSGround        # eBay shipping service name
+    cost: 0.00                # 0.00 = free shipping
+    additional_cost: 0.00
+
+pricing:
+  # Tiered markup on cost price.  Rules evaluated top-down; first match wins.
+  # Each rule: if cost <= max_cost, apply markup_pct (as decimal, e.g. 0.40 = 40%)
+  tiers:
+    - max_cost: 100
+      markup_pct: 0.55
+    - max_cost: 300
+      markup_pct: 0.40
+    - max_cost: 750
+      markup_pct: 0.32
+    - markup_pct: 0.25         # catch-all for anything over $750
+
+  # "x.99" rounds to nearest dollar then subtracts 1 cent (e.g. 139.99)
+  # "x.95" does the same but -5 cents
+  # "none" leaves price as-is
+  rounding: "x.99"
+
+  # Never list below vendor MAP price (if MAP column exists in CSV)
+  enforce_map: true
+
+  # Minimum absolute margin in dollars regardless of markup pct
+  min_margin_dollars: 10.00
+
+upload:
+  batch_size: 10              # Trading API AddItems max is 10
+  dry_run: false              # true = validate & log but don't actually upload
+  skip_existing: true         # skip SKUs already in the tracking DB with status=live
+  max_images: 12              # eBay allows up to 12 per listing
+
+# Default fallback values used when a vendor CSV is missing a field
+defaults:
+  quantity: 1
+  condition_id: 1000           # 1000 = New
+  listing_type: FixedPriceItem

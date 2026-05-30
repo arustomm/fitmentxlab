@@ -1,0 +1,54 @@
+# Tire Vendor CSV Column Mapping Template
+# Duplicate this file for each vendor and fill in the actual column headers.
+# Column names are case-insensitive and whitespace-trimmed automatically.
+
+vendor_name: "My Tire Vendor"
+product_type: tire            # tire | wheel | suspension | package
+
+# Required columns — must exist in the CSV
+columns:
+  sku: "Part Number"
+  brand: "Brand"
+  title: "Product Name"
+  cost: "Dealer Cost"
+  quantity: "QTY"
+
+  # Tire size — either a single combined column OR individual columns
+  # If the vendor has a combined size like "295/70R18", use size_combined.
+  # Otherwise fill in the individual fields below.
+  size_combined: "Tire Size"   # e.g. "295/70R18" or "LT295/70R18"
+  # tire_width: "Section Width"
+  # tire_aspect: "Aspect Ratio"
+  # tire_diameter: "Rim Diameter"
+
+  # Optional but highly recommended
+  load_index: "Load Index"
+  speed_rating: "Speed Rating"
+  load_range: "Load Range"
+  utqg: "UTQG"
+  sidewall: "Sidewall"
+  upc: "UPC"
+  mpn: "MPN"
+  msrp: "MSRP"
+  description: "Description"
+
+  # Images — comma-separated URLs or a single URL
+  images: "Image URL"
+
+  # MAP price — if vendor enforces minimum advertised price
+  map_price: "MAP"
+
+  # Fitment — formats supported:
+  #   combined_text: one cell with text like "2019-2023 Ford F-150 XLT"
+  #   columns: year/make/model/trim/engine each in their own column
+  fitment_text: ""            # column header, leave blank if not applicable
+  fitment_year: ""
+  fitment_make: ""
+  fitment_model: ""
+  fitment_trim: ""
+  fitment_engine: ""
+
+# Overrides applied to every product from this vendor
+overrides:
+  country_of_manufacture: "China"   # or "United States", "South Korea", etc.
+  warranty: "Manufacturer Warranty"

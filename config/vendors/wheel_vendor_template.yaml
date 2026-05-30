@@ -1,0 +1,39 @@
+# Wheel Vendor CSV Column Mapping Template
+vendor_name: "My Wheel Vendor"
+product_type: wheel
+
+columns:
+  sku: "Part Number"
+  brand: "Brand"
+  title: "Product Name"
+  cost: "Dealer Cost"
+  quantity: "QTY"
+
+  # Wheel dimensions
+  diameter: "Diameter"          # e.g. "20"
+  width: "Width"                # e.g. "9"
+  bolt_pattern: "Bolt Pattern"  # e.g. "6x139.7" or "5-114.3"
+  offset: "Offset"              # e.g. "+18" or "-24" or just "18"
+  backspacing: "Backspacing"
+  hub_bore: "Hub Bore"
+  finish: "Finish"              # e.g. "Gloss Black Milled"
+
+  # Optional
+  upc: "UPC"
+  mpn: "Part Number"
+  msrp: "MSRP"
+  map_price: "MAP"
+  description: "Description"
+  images: "Image URL"
+
+  # Fitment (bolt pattern lookup handles most wheel fitment automatically)
+  fitment_text: ""
+  fitment_year: ""
+  fitment_make: ""
+  fitment_model: ""
+  fitment_trim: ""
+  fitment_engine: ""
+
+overrides:
+  material: "Aluminum Alloy"
+  warranty: "Manufacturer Warranty"
