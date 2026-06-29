@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Dark theme base styles */
+@layer base {
+  html {
+    @apply dark;
+  }
+  
+  body {
+    @apply bg-dark-bg text-dark-text antialiased;
+  }
+  
+  * {
+    @apply border-dark-border;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-forest-green hover:bg-forest-green-light text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-glow transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-forest-green text-forest-green hover:bg-forest-green hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-glow;
+  }
+  
+  .btn-secondary {
+    @apply bg-dark-card hover:bg-dark-border text-dark-text font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-card-hover;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-dark-card border border-dark-border rounded-xl shadow-dramatic transition-all duration-300 hover:shadow-card-hover hover:border-forest-green-dark;
+  }
+  
+  .card-hover {
+    @apply hover:transform hover:scale-105 hover:shadow-glow;
+  }
+
+  /* Input Styles */
+  .input-field {
+    @apply bg-dark-surface border border-dark-border text-dark-text placeholder-dark-text-secondary rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent transition-all duration-300 w-full;
+  }
+
+  /* Text Styles */
+  .text-primary {
+    @apply text-dark-text;
+  }
+  
+  .text-secondary {
+    @apply text-dark-text-secondary;
+  }
+  
+  .text-accent {
+    @apply text-forest-green;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    @apply relative bg-gradient-dark overflow-hidden;
+  }
+  
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-overlay;
+  }
+  
+  .hero-gradient {
+    @apply bg-gradient-forest;
+  }
+
+  /* Product Grid */
+  .product-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-dark-text hover:text-forest-green transition-colors duration-300 font-medium relative;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-forest-green transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Price Tag */
+  .price-tag {
+    @apply text-accent-gold font-bold text-lg;
+  }
+  
+  .price-compare {
+    @apply text-dark-text-secondary line-through text-sm;
+  }
+  
+  .price-original {
+    @apply text-dark-text-secondary line-through text-sm;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-new {
+    @apply bg-forest-green text-white;
+  }
+  
+  .badge-sale {
+    @apply bg-accent-red text-white;
+  }
+  
+  .badge-premium {
+    @apply bg-accent-gold text-dark-bg;
+  }
+  
+  .badge-featured {
+    @apply badge bg-forest-green text-white;
+  }
+  
+  .badge-category {
+    @apply badge bg-dark-surface text-forest-green border border-forest-green;
+  }
+
+  /* Loading Animation */
+  .loading-spinner {
+    @apply animate-spin rounded-full border-4 border-dark-border border-t-forest-green;
+  }
+
+  /* Glow Effects */
+  .glow-on-hover {
+    @apply transition-all duration-300 hover:shadow-glow;
+  }
+  
+  .premium-glow {
+    @apply shadow-glow-gold;
+  }
+
+  /* Typography */
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-dark-text leading-tight;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold text-dark-text leading-tight;
+  }
+  
+  .heading-md {
+    @apply text-2xl md:text-3xl font-semibold text-dark-text;
+  }
+  
+  .body-text {
+    @apply text-dark-text-secondary leading-relaxed;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-dark-surface;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-forest-green rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-forest-green-light;
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Image hover effects */
+.image-hover-zoom {
+  @apply transition-transform duration-500 hover:scale-110;
+}
+
+.image-overlay {
+  @apply absolute inset-0 bg-gradient-overlay opacity-0 transition-opacity duration-300 hover:opacity-100 flex items-center justify-center;
+}
+
+/* Premium styling for high-end brands */
+.premium-card {
+  @apply card premium-glow border-accent-gold;
+}
+
+.premium-badge {
+  @apply absolute top-4 right-4 bg-accent-gold text-dark-bg px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide;
+}
+
+/* Dark theme specific overrides */
+.dark {
+  color-scheme: dark;
+}
+
+.dark input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+  background-size: contain;
+  cursor: pointer;
+}
+
