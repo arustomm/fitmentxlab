@@ -10,6 +10,34 @@ All dollar figures below are real, pulled live from USASpending.gov on
 
 ---
 
+## Start here — this week
+
+Everything downstream depends on SAM.gov, and 8(a)/HUB have long review
+clocks, so kick off all three now rather than sequentially:
+
+1. **SAM.gov registration** (sam.gov) — needs your EIN, legal business name,
+   and bank account/routing for EFT. This issues your UEI + CAGE code, which
+   every other step (DIBBS, GSA, 8(a), Texas CMBL) needs as a prerequisite.
+   Budget 1-2 weeks; expect an identity-verification notarized-letter step
+   if this is a first-time registration.
+2. **Start gathering 8(a) application documents in parallel** (don't wait
+   for SAM to finish first) — you'll need: 3 years of personal tax returns,
+   a personal financial statement (net worth ≤ $850K test), business
+   formation documents proving 51%+ ownership/control, and 2 years of
+   business financials/tax returns. Apply at certify.sba.gov once you have
+   your UEI.
+3. **Start the Texas HUB application** (comptroller.texas.gov/purchasing/vendor/hub)
+   — same ownership/formation documents as above, ~90-day review, free.
+4. **Draft a one-page capability statement** — company name/UEI/CAGE once
+   issued, NAICS codes from Track A and/or B, a short past-performance or
+   commercial-experience paragraph, and your pending 8(a)/HUB status. This
+   is what you hand a contracting officer the first time you call one.
+5. **Answer the open question below** (courier vehicle/driver capacity) —
+   it decides whether you push Track A, Track B, or both in parallel over
+   the next 90 days.
+
+---
+
 ## 1. Entity setup (do this first, ~2-4 weeks, mostly waiting on the govt)
 
 1. **Get a D-U-N-S/UEI.** SAM.gov now issues a **Unique Entity ID (UEI)**
