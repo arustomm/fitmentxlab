@@ -48,24 +48,69 @@ All dollar figures below are real, pulled live from USASpending.gov on
    their open solicitation windows (a few times a year) as a regular small
    business.
 
-## 2. On certifications — skip demographic set-asides, lean on plain "small business"
+## 2. Certifications — correction: 8(a) and Texas HUB are very likely open to you
 
-You mentioned you don't qualify for WOSB/EDWOSB, SDVOSB, HUBZone, or 8(a) —
-and Texas HUB (the state's version) uses the same ownership categories
-(minority/woman/service-disabled-veteran, economically disadvantaged), so
-it's very unlikely to apply either. That's fine: skip certification-chasing
-entirely and lean on the lane that doesn't require any of it —
+Earlier I lumped 8(a) in with WOSB/SDVOSB/HUBZone as "probably doesn't
+apply" — that was wrong to assume without asking. **8(a) is specifically
+the federal minority-owned-business program**, and Black Americans are on
+SBA's *presumed social disadvantage* list (13 CFR 124.103), alongside
+Hispanic American, Native American, Asian Pacific American, and
+Subcontinent Asian American individuals. Presumed means you don't have to
+document personal discrimination history — social disadvantage is assumed
+once ownership is established. Texas HUB works the same way at the state
+level (Texas Gov't Code §2161.001): Black American ownership is one of its
+named qualifying categories alongside Hispanic American, Asian Pacific
+American, Native American, woman, and service-disabled veteran.
+
+**Federal 8(a) — SBA Business Development Program**, apply at
+[certify.sba.gov](https://certify.sba.gov). Eligibility factors:
+- **Ownership/control:** at least 51% owned and controlled by you (a U.S.
+  citizen) day-to-day.
+- **Social disadvantage:** presumed for Black American ownership — no
+  extra proof required.
+- **Economic disadvantage:** personal net worth ≤ $850,000 (your primary
+  residence and equity in the business itself don't count against this),
+  average adjusted gross income over the last 3 years ≤ $400,000, total
+  assets ≤ $6.5 million.
+- **Size:** business must qualify as "small" under its primary NAICS code.
+- **Time in business:** generally 2 years operating (a few narrow waivers
+  exist, worth asking your local SBA district office about if FitmentXLab
+  is younger than that).
+- **Good character**, no unresolved federal debt.
+- **Benefit:** 9-year program (4-year development + 5-year transition),
+  sole-source authority up to **$4.5M for services/supplies, $7M for
+  manufacturing**, plus competitions restricted to other 8(a) firms only.
+
+**Texas HUB**, apply through the Texas Comptroller
+(comptroller.texas.gov/purchasing/vendor/hub) — free, ~90-day review.
+Ownership/control test is similar (51%+, day-to-day control, principal
+place of business in Texas, under the state's size standard). It doesn't
+carry the same strict federal net-worth/income caps as 8(a) — it's a
+state-run program layered on top of, not identical to, the federal one, so
+apply to both rather than assuming one covers the other. HUB certification
+also matters beyond direct state contracts: **Texas state agencies and
+their large prime contractors have HUB subcontracting participation goals
+they're required to report on**, so a HUB cert makes you a target for
+subcontracting outreach even on contracts you couldn't win outright.
+
+**Do both** — they're separate applications, both free, and stack: 8(a)
+gets you federal sole-source authority up to $4.5M/$7M; Texas HUB gets you
+into every Texas agency's and prime's subcontracting pipeline. This is a
+materially bigger lever than the plain small-business lane described
+below, so prioritize starting these applications immediately alongside
+SAM.gov registration.
+
+If it turns out net worth/income disqualifies you from 8(a) specifically
+(the caps above), you still have Texas HUB (no equivalent hard cap) and
+the plain small-business lane:
 
 - **Total Small Business Set-Aside** (SAM.gov code `SBA`) — the *only*
   requirement is that your business falls under the NAICS code's SBA size
-  standard (e.g., under $9M–$47M in receipts depending on the code, or
-  under 500–1,500 employees for manufacturing codes). Self-certified, free,
-  automatic once you complete SAM Reps & Certs. Looking back at the real
-  award data pulled for this plan — LOC Performance Products, SupplyCore,
-  William Lyons, FCX LLC, AMS Express — **none of those wins required a
-  demographic certification**, just small-business size status. This is
-  already the dominant lane in your two tracks, so nothing here is lost by
-  skipping WOSB/SDVOSB/HUB.
+  standard. Self-certified, free, automatic once you complete SAM Reps &
+  Certs. This is the lane behind every example in this plan already (LOC
+  Performance Products, SupplyCore, William Lyons, FCX LLC, AMS Express all
+  won without any demographic certification), so it's a solid floor even
+  before 8(a)/HUB come through.
 
 ## 3. Two concrete tracks to start bidding, plus a general scanner
 
@@ -150,17 +195,22 @@ Ranked by how little competition you'll face as a new vendor:
 1. **Micro-purchases (<$10,000)** — no competition required at all; a
    contracting officer can just call/email you. Build relationships with COs
    at your nearest agency site.
-2. **Simplified Acquisition Threshold buys ($10K-$250K), Total Small
-   Business Set-Aside** — streamlined competition, no demographic
-   certification needed, just SBA size-standard self-certification. This is
-   where almost every example in this plan falls, and it's your primary
-   lane given no set-aside eligibility.
-3. **State/school-district cooperative contracts** (BuyBoard, TIPS-USA,
+2. **8(a) sole-source (once certified)** — no competition at all, up to
+   $4.5M/$7M, awarded directly to you by a contracting officer who wants an
+   8(a) firm for the requirement. This is the single best lane available to
+   you and worth fast-tracking the application for.
+3. **Simplified Acquisition Threshold buys ($10K-$250K), Total Small
+   Business or 8(a) Set-Aside** — streamlined competition. This is where
+   almost every example in this plan falls today.
+4. **Texas HUB subcontracting / state HUB set-asides** — Texas agencies and
+   their primes have mandatory HUB participation goals, so this opens doors
+   beyond contracts you'd bid directly.
+5. **State/school-district cooperative contracts** (BuyBoard, TIPS-USA,
    Sourcewell, OMNIA, NASPO) — one bid, many buyers, open to any registered
    small business.
-4. **GSA Schedule / MAS / TXMAS** — more setup effort, but once on it,
+6. **GSA Schedule / MAS / TXMAS** — more setup effort, but once on it,
    agencies (federal or Texas state, via TXMAS) can buy from you directly.
-5. **Full-and-open, unrestricted competitions** — hardest, most competition;
+7. **Full-and-open, unrestricted competitions** — hardest, most competition;
    deprioritize until you have past-performance history.
 
 ## 5. The toolkit (`gov-contracting/`)
@@ -206,15 +256,25 @@ python3 cross_reference.py --track automotive_fitment
 ## 7. Suggested 30/60/90
 
 - **Days 1-15:** SAM.gov registration + reps & certs (Total Small Business
-  self-cert), draft capability statement, start Texas CMBL registration.
+  self-cert), draft capability statement, start Texas CMBL registration,
+  **start the 8(a) application at certify.sba.gov and the Texas HUB
+  application** — these have the longest lead times (8(a) review can run
+  90 days, HUB ~90 days) so start them in parallel with everything else,
+  not after.
 - **Days 15-30:** DIBBS registration (Track A) if pursuing parts; identify
   the nearest VA medical center / base from the Track B list above and find
   their current courier contract + incumbent + expiration. Run
   `cross_reference.py` weekly once SAM_API_KEY is set up. Register on
   TxSmartBuy/ESBD.
-- **Days 30-90:** Bid on the first 3-5 realistic opportunities under $250K,
-  apply to BuyBoard/TIPS-USA in their next open window, watch ESBD +
-  DIBBS + SAM.gov together.
+- **Days 30-90:** Bid on the first 3-5 realistic opportunities under $250K
+  as Total Small Business while 8(a)/HUB are still in review; apply to
+  BuyBoard/TIPS-USA in their next open window; watch ESBD + DIBBS + SAM.gov
+  together.
+- **Once 8(a)/HUB certifications land:** shift to actively asking
+  contracting officers at your target VA/base sites whether they'll
+  sole-source the next courier recompete to you as an 8(a) firm, and
+  register your HUB status on Texas CMBL so state agencies' HUB
+  subcontracting searches surface you.
 
 ## Open question for you
 
