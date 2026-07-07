@@ -24,27 +24,48 @@ All dollar figures below are real, pulled live from USASpending.gov on
    HUBZone, or 8(a)-eligible. These set-asides are the single biggest lever
    for a new entrant: they legally exclude large primes from competing.
 4. **Get a CAGE code** (issued automatically with SAM registration).
-5. **State/local registration** — separate from SAM.gov. Each state runs its
-   own vendor portal (e.g., a state's central procurement office + often a
-   third-party bid board like BidNet Direct, Ionwave/Periscope, or
-   PlanetBids). Tell me your state and I'll pull the specific portal + any
-   state small-business/M/WBE certification program (usually free, run by
-   the state's Office of Minority/Women Business or similar).
-6. **Register for cooperative purchasing contracts** — Sourcewell,
-   OMNIA Partners, and NASPO ValuePoint let one master contract sell to
-   thousands of state/local/school agencies without re-bidding each one.
-   These run open solicitation cycles a few times a year — worth watching
-   for automotive parts, fleet maintenance, and courier/delivery categories.
+5. **Register with the State of Texas** — this is separate from SAM.gov:
+   - **Centralized Master Bidders List (CMBL)** (comptroller.texas.gov/purchasing) —
+     the core vendor registry state agencies use to find you. Small fee
+     (~$70/2 years) but you can browse solicitations free without joining
+     first. Select the same NAICS/commodity classes as your SAM.gov codes.
+   - **TxSmartBuy** (txsmartbuy.com) — Texas's e-procurement/catalog site;
+     the **Electronic State Business Daily (ESBD)** on the same domain lists
+     every state solicitation over $25,000.
+   - **TXMAS (Texas Multiple Award Schedule)** — lets you sell to Texas
+     agencies off an *existing* GSA Schedule contract without a separate
+     state competition, if/when you get on a GSA MAS.
+6. **Register for cooperative purchasing contracts** — two of the biggest
+   are actually Texas-based and worth prioritizing over the national ones:
+   - **BuyBoard** (buyboard.com) — run by Texas Association of School Boards;
+     covers Texas + many other states' school districts, cities, and counties.
+   - **TIPS-USA** (tips-usa.com) — based in Texas (Texas Association of School
+     Boards affiliated coop out of Pittsburg, TX), sells nationally but has
+     heavy Texas local-government participation.
+   - **Sourcewell / OMNIA Partners / NASPO ValuePoint** — national coops,
+     still worth watching for automotive parts and courier/delivery categories.
+   None of these require a demographic set-aside status — just apply during
+   their open solicitation windows (a few times a year) as a regular small
+   business.
 
-## 2. Certifications worth pursuing (do in parallel with step 1)
+## 2. On certifications — skip demographic set-asides, lean on plain "small business"
 
-- **Small Business** (self-certified, free, immediate via SAM reps & certs).
-- **WOSB / EDWOSB, SDVOSB/VOSB, HUBZone, 8(a)** — only pursue the ones you
-  actually qualify for; each unlocks its own competition pool with far less
-  competition than full-and-open. If any apply to you personally, say so and
-  I'll fold the exact application steps in.
-- **State M/WBE certifications** — separate from federal, usually recognized
-  by that state's agencies and sometimes reciprocal with nearby states.
+You mentioned you don't qualify for WOSB/EDWOSB, SDVOSB, HUBZone, or 8(a) —
+and Texas HUB (the state's version) uses the same ownership categories
+(minority/woman/service-disabled-veteran, economically disadvantaged), so
+it's very unlikely to apply either. That's fine: skip certification-chasing
+entirely and lean on the lane that doesn't require any of it —
+
+- **Total Small Business Set-Aside** (SAM.gov code `SBA`) — the *only*
+  requirement is that your business falls under the NAICS code's SBA size
+  standard (e.g., under $9M–$47M in receipts depending on the code, or
+  under 500–1,500 employees for manufacturing codes). Self-certified, free,
+  automatic once you complete SAM Reps & Certs. Looking back at the real
+  award data pulled for this plan — LOC Performance Products, SupplyCore,
+  William Lyons, FCX LLC, AMS Express — **none of those wins required a
+  demographic certification**, just small-business size status. This is
+  already the dominant lane in your two tracks, so nothing here is lost by
+  skipping WOSB/SDVOSB/HUB.
 
 ## 3. Two concrete tracks to start bidding, plus a general scanner
 
@@ -69,6 +90,12 @@ Schedule (MAS), Vehicular & Fleet category** — getting on this schedule
 (3-6 month process) lets agencies buy from you directly off GSA Advantage
 without a fresh competition each time.
 
+Texas-based angle: **Red River Army Depot** (Texarkana) overhauls tactical
+wheeled vehicles and is a major consumer of wheel/tire/suspension
+components; **Corpus Christi Army Depot** does rotary-wing work (less of a
+fit). Fleet-vehicle non-tactical parts also route through base-level
+logistics at every installation listed in Track B below.
+
 ### Track B — Medical/general courier (recommended as your easiest near-term win)
 
 This is a service, not a product: no inventory, no manufacturing, just a
@@ -92,6 +119,21 @@ center or Air Force base and ask about their courier contract's next
 recompete date. NAICS 492110 (Couriers and Express Delivery) is the
 primary code.
 
+Texas has an unusually large number of these facilities to target directly:
+
+- **VA medical centers:** Houston (Michael E. DeBakey), Dallas, San Antonio
+  (Audie L. Murphy), Temple (Olin E. Teague), Waco, El Paso, Amarillo,
+  Big Spring, Bonham — each runs its own local courier/lab-specimen contract.
+- **Air Force / Army / Joint bases:** Joint Base San Antonio (Lackland,
+  Randolph, Fort Sam Houston), Sheppard AFB (Wichita Falls), Fort Cavazos
+  (Killeen), Fort Bliss (El Paso), Dyess AFB (Abilene), Goodfellow AFB
+  (San Angelo).
+- Also worth checking: **Texas HHSC/DSHS** regional labs (state-level
+  specimen courier contracts run through the state procurement channels
+  in Section 1, not SAM.gov).
+
+Which of these is closest to you determines where to start calling.
+
 ### Track C — General easy-entry scan
 
 Janitorial (561720), landscaping (561730), local hauling/moving (484210),
@@ -108,17 +150,17 @@ Ranked by how little competition you'll face as a new vendor:
 1. **Micro-purchases (<$10,000)** — no competition required at all; a
    contracting officer can just call/email you. Build relationships with COs
    at your nearest agency site.
-2. **Simplified Acquisition Threshold buys ($10K-$250K)** — streamlined
-   competition, often small-business set-aside by default. This is where
-   almost every example above falls.
-3. **Sole-source set-asides** (SDVOSB, 8(a), HUBZone) — if you or a partner
-   qualifies, agencies can award to you *without* competition up to much
-   higher thresholds.
-4. **State/local cooperative contracts** (Sourcewell, OMNIA, NASPO) — one
-   bid, many buyers.
-5. **GSA Schedule / MAS** — more setup effort, but once on it, agencies can
-   buy from you directly.
-6. **Full-and-open, unrestricted competitions** — hardest, most competition;
+2. **Simplified Acquisition Threshold buys ($10K-$250K), Total Small
+   Business Set-Aside** — streamlined competition, no demographic
+   certification needed, just SBA size-standard self-certification. This is
+   where almost every example in this plan falls, and it's your primary
+   lane given no set-aside eligibility.
+3. **State/school-district cooperative contracts** (BuyBoard, TIPS-USA,
+   Sourcewell, OMNIA, NASPO) — one bid, many buyers, open to any registered
+   small business.
+4. **GSA Schedule / MAS / TXMAS** — more setup effort, but once on it,
+   agencies (federal or Texas state, via TXMAS) can buy from you directly.
+5. **Full-and-open, unrestricted competitions** — hardest, most competition;
    deprioritize until you have past-performance history.
 
 ## 5. The toolkit (`gov-contracting/`)
@@ -163,21 +205,19 @@ python3 cross_reference.py --track automotive_fitment
 
 ## 7. Suggested 30/60/90
 
-- **Days 1-15:** SAM.gov registration + reps & certs, decide on any
-  qualifying certifications (WOSB/SDVOSB/etc.), draft capability statement.
+- **Days 1-15:** SAM.gov registration + reps & certs (Total Small Business
+  self-cert), draft capability statement, start Texas CMBL registration.
 - **Days 15-30:** DIBBS registration (Track A) if pursuing parts; identify
-  3-5 nearest VA medical centers / Air Force bases and find their current
-  courier contract + incumbent + expiration (Track B). Run
-  `cross_reference.py` weekly once SAM_API_KEY is set up.
-- **Days 30-90:** Bid on the first 3-5 realistic opportunities (prioritize
-  set-asides you qualify for and dollar amounts under $250K), start a
-  Sourcewell/OMNIA/NASPO cooperative-contract application if a relevant
-  solicitation cycle is open, register on your state's vendor portal.
+  the nearest VA medical center / base from the Track B list above and find
+  their current courier contract + incumbent + expiration. Run
+  `cross_reference.py` weekly once SAM_API_KEY is set up. Register on
+  TxSmartBuy/ESBD.
+- **Days 30-90:** Bid on the first 3-5 realistic opportunities under $250K,
+  apply to BuyBoard/TIPS-USA in their next open window, watch ESBD +
+  DIBBS + SAM.gov together.
 
-## Open questions for you
+## Open question for you
 
-- Which state are you based in (for state/local portal + M/WBE cert specifics)?
-- Do you personally qualify for veteran, HUBZone, or WOSB/EDWOSB status? This
-  changes which sole-source lanes are available.
-- Do you have a vehicle/driver capacity to actually run courier routes, or
-  would that track need subcontracted drivers?
+- Do you have a vehicle/driver capacity to actually run courier routes
+  yourself, or would that track need subcontracted drivers? This determines
+  whether Track B is a direct-run business or one you'd need to staff.
