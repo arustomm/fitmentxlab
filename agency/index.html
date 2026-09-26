@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Signalnine is a creative and performance marketing studio that turns attention into revenue.">
-<title>Signalnine Studio</title>
+<meta name="description" content="Onyx Marketing Group is a creative and performance marketing agency that turns attention into revenue.">
+<title>Onyx Marketing Group</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -70,8 +70,10 @@
     backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
   }
   .logo { font: 800 19px/1 var(--display); letter-spacing: -0.02em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-  .logo-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--holo); position: relative; }
-  .logo-mark::after { content: ""; position: absolute; inset: 6px; border-radius: 2px; background: var(--ink); }
+  .logo-mark { width: 20px; height: 20px; border-radius: 4px; background: var(--holo); position: relative; transform: rotate(45deg); flex: none; }
+  .logo-mark::after { content: ""; position: absolute; inset: 2px; border-radius: 2px; background: linear-gradient(135deg, #3A4050 0%, #0B0D12 55%, #1C2029 100%); }
+  .logo-word { display: flex; align-items: baseline; gap: 8px; letter-spacing: 0.06em; }
+  .logo-word small { font: 500 10px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
   .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
   .nav-links a { text-decoration: none; transition: color .2s; }
   .nav-links a:hover { color: var(--text); }
@@ -226,7 +228,7 @@
   .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 15px; }
   .foot-grid a { text-decoration: none; color: #C3C8D4; }
   .foot-grid a:hover { color: var(--text); }
-  .wordmark { font: 800 clamp(56px, 14vw, 200px)/0.85 var(--display); letter-spacing: -0.05em; margin-top: clamp(48px, 7vw, 96px); background: linear-gradient(180deg, #2A303C 0%, var(--ink) 95%); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: none; white-space: nowrap; overflow: hidden; }
+  .wordmark { font: 800 clamp(72px, 24vw, 340px)/0.85 var(--display); letter-spacing: 0.02em; margin-top: clamp(48px, 7vw, 96px); background: linear-gradient(180deg, #2A303C 0%, var(--ink) 95%); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: none; white-space: nowrap; overflow: hidden; }
   .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font: 400 12px/1.4 var(--mono); color: var(--muted); margin-top: 20px; }
 
   @media (max-width: 960px) {
@@ -242,6 +244,7 @@
   }
   @media (max-width: 600px) {
     body { font-size: 16px; }
+    .nav-inner .logo-word small { display: none; }
     .bento { grid-template-columns: 1fr; }
     .c-a, .c-b, .c-c, .c-d, .c-e { grid-column: span 1; }
     .steps { grid-template-columns: 1fr; }
@@ -260,12 +263,12 @@
 </head>
 <body>
 
-<div class="notice"><b>Template preview.</b> Client names, results and quotes below are sample content. Replace them with your own before launch.</div>
+<div class="notice"><b>Template preview.</b> Client names, results, quotes and contact details below are sample content. Replace them with your own before launch.</div>
 
 <header class="nav">
   <div class="wrap">
     <div class="nav-inner">
-      <a class="logo" href="#top" aria-label="Signalnine home"><span class="logo-mark" aria-hidden="true"></span>Signalnine</a>
+      <a class="logo" href="#top" aria-label="Onyx Marketing Group home"><span class="logo-mark" aria-hidden="true"></span><span class="logo-word">ONYX<small>Marketing Group</small></span></a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
@@ -283,7 +286,7 @@
     <div class="wrap">
       <span class="eyebrow">Performance creative · Growth systems · Brand</span>
       <h1>We turn attention into <span class="rotator holo-text" id="rotator"><span>revenue.</span></span></h1>
-      <p class="hero-sub">Signalnine is a creative and performance studio for ambitious brands. We build the campaigns, content engines and measurement that make every marketing dollar traceable to growth.</p>
+      <p class="hero-sub">Onyx Marketing Group is a creative and performance agency for ambitious brands. We build the campaigns, content engines and measurement that make every marketing dollar traceable to growth.</p>
       <div class="hero-actions">
         <a class="btn btn-holo" href="#contact">Get your growth audit <span class="arrow" aria-hidden="true">→</span></a>
         <a class="link-quiet" href="#work">See the results ↓</a>
@@ -309,7 +312,7 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">What we do</span>
-        <h2>One studio for the idea, the <span class="holo-text">media</span> and the math.</h2>
+        <h2>One agency for the idea, the <span class="holo-text">media</span> and the math.</h2>
         <p>Most agencies hand you creative or hand you dashboards. We run both in one loop, so what we learn from the numbers shapes the next piece of creative within days.</p>
       </div>
       <div class="bento">
@@ -461,7 +464,7 @@
       </div>
       <div class="quotes">
         <figure class="quote" style="margin:0">
-          <blockquote>“Signalnine is the first agency that showed us exactly which dollars made money. We doubled our budget with them in month four and haven't looked back.”</blockquote>
+          <blockquote>“Onyx is the first agency that showed us exactly which dollars made money. We doubled our budget with them in month four and haven't looked back.”</blockquote>
           <figcaption class="who"><span class="avatar" aria-hidden="true">MK</span><span><b>Maya Kessler</b><span>VP Growth, Northwind Outdoor</span></span></figcaption>
         </figure>
         <div style="display:grid; gap:14px">
@@ -515,15 +518,15 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span>Signalnine</a>
-        <p style="color:var(--muted); margin-top:16px; max-width:36ch; font-size:15px">Creative and performance studio. Offices in Los Angeles and New York, working with brands worldwide.</p>
+        <a class="logo" href="#top" aria-label="Onyx Marketing Group home"><span class="logo-mark" aria-hidden="true"></span><span class="logo-word">ONYX<small>Marketing Group</small></span></a>
+        <p style="color:var(--muted); margin-top:16px; max-width:36ch; font-size:15px">Creative and performance marketing agency, built for brands that want every dollar to show up in revenue.</p>
       </div>
       <div><h4>Studio</h4><ul><li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#process">Process</a></li><li><a href="#contact">Contact</a></li></ul></div>
       <div><h4>Social</h4><ul><li><a href="https://www.linkedin.com" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com" rel="noopener">TikTok</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><span style="color:#C3C8D4">hello@signalnine.studio</span></li><li><span style="color:#C3C8D4">+1 (310) 555-0199</span></li></ul></div>
+      <div><h4>Contact</h4><ul><li><span style="color:#C3C8D4">hello@onyxmarketinggroup.com</span></li><li><span style="color:#C3C8D4">+1 (310) 555-0199</span></li></ul></div>
     </div>
-    <div class="wordmark" aria-hidden="true">Signalnine</div>
-    <div class="foot-bottom"><span>© 2026 Signalnine Studio</span><span>Built for growth. Measured in revenue.</span></div>
+    <div class="wordmark" aria-hidden="true">ONYX</div>
+    <div class="foot-bottom"><span>© 2026 Onyx Marketing Group</span><span>Built for growth. Measured in revenue.</span></div>
   </div>
 </footer>
 
