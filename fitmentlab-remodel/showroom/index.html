@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Custom wheels and tires with guaranteed fitment for your exact vehicle. $0 down financing, 100 days no interest.">
+<title>Fitment Lab Showroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #E8E9EB;
+    --paper-2: #F4F5F6;
+    --white: #FFFFFF;
+    --ink: #111214;
+    --ink-2: #2B2D31;
+    --muted: #6B6E75;
+    --line: #CDCFD3;
+    --red: #C8102E;
+    --display: "Archivo", "Arial Black", Arial, sans-serif;
+    --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+    --mono: "DM Mono", ui-monospace, Menlo, monospace;
+    --gutter: clamp(16px, 4vw, 48px);
+    --max: 1320px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+  h1, h2, h3 { font-family: var(--display); font-stretch: 125%; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: .9; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  .label { font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+  .topline { background: var(--ink); color: #E8E9EB; font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: center; padding: 10px var(--gutter); }
+  .topline b { color: #fff; font-weight: 500; border-bottom: 1px solid var(--red); }
+
+  .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(232,233,235,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 64px; gap: 16px; }
+  .nav nav { display: flex; gap: 22px; font: 600 13px/1 var(--body); }
+  .nav nav a { text-decoration: none; }
+  .nav nav a:hover { color: var(--red); }
+  .nav .right { justify-content: flex-end; }
+  .logo { font: 900 22px/1 var(--display); font-stretch: 125%; letter-spacing: -0.02em; text-decoration: none; text-transform: uppercase; }
+  .logo span { color: var(--red); }
+
+  /* Hero */
+  .hero { padding-block: clamp(36px, 6vw, 80px) 0; position: relative; }
+  .hero-top { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+  .hero h1 { font-size: clamp(52px, 10.5vw, 168px); font-weight: 900; }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero-meta { max-width: 32ch; display: grid; gap: 14px; padding-bottom: 10px; }
+  .hero-meta p { color: var(--ink-2); font-size: 17px; }
+  .stage { position: relative; display: grid; grid-template-columns: 1fr minmax(260px, 520px) 1fr; align-items: center; margin-top: clamp(16px, 3vw, 32px); }
+  .stage::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); }
+  .wheel { position: relative; grid-column: 2; aspect-ratio: 1; }
+  .wheel img { width: 100%; filter: drop-shadow(0 40px 50px rgba(17,18,20,.28)); will-change: transform; }
+  .callout { position: absolute; display: grid; gap: 4px; font: 500 12px/1.2 var(--mono); }
+  .callout b { font: 800 clamp(22px, 2.6vw, 34px)/1 var(--display); font-stretch: 125%; }
+  .callout::before { content: ""; position: absolute; height: 1px; background: var(--ink); width: clamp(30px, 6vw, 90px); top: 50%; }
+  .c1 { right: calc(100% + 16px); top: 16%; text-align: right; }
+  .c1::before { left: calc(100% + 8px); }
+  .c2 { left: calc(100% + 16px); top: 44%; }
+  .c2::before { right: calc(100% + 8px); }
+  .c3 { right: calc(100% + 16px); top: 74%; text-align: right; }
+  .c3::before { left: calc(100% + 8px); }
+
+  /* Sentence finder */
+  .finder { background: var(--white); border: 1px solid var(--line); margin-top: clamp(28px, 4vw, 48px); padding: clamp(20px, 3vw, 36px); display: grid; gap: 20px; box-shadow: 0 30px 60px -40px rgba(17,18,20,.35); }
+  .sentence { font: 700 clamp(26px, 3.6vw, 50px)/1.25 var(--display); font-stretch: 110%; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+  .sentence select { font: inherit; letter-spacing: inherit; color: var(--red); background: none; border: 0; border-bottom: 3px solid var(--ink); padding: 0 4px; cursor: pointer; appearance: none; -webkit-appearance: none; border-radius: 0; max-width: 100%; }
+  .sentence select:focus { outline: none; border-bottom-color: var(--red); }
+  .result { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid var(--line); }
+  .facts { display: flex; flex-wrap: wrap; gap: 12px 32px; }
+  .fact { display: grid; gap: 4px; }
+  .fact b { font: 500 20px/1 var(--mono); font-variant-numeric: tabular-nums; }
+  .btn { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; text-decoration: none; font: 700 14px/1 var(--body); letter-spacing: .02em; padding: 16px 24px; border: 0; cursor: pointer; transition: background .2s; }
+  .btn:hover { background: var(--red); }
+  .btn .arr { transition: transform .2s; }
+  .btn:hover .arr { transform: translateX(4px); }
+
+  .strip { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding-block: 22px; border-block: 1px solid var(--line); margin-top: clamp(40px, 6vw, 72px); font: 500 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .strip span b { color: var(--red); font-weight: 500; }
+
+  section.block { padding-block: clamp(64px, 9vw, 128px); }
+  .head { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+  .head h2 { font-size: clamp(40px, 6vw, 96px); margin-top: 14px; }
+  .link { font: 700 14px/1 var(--body); text-decoration: none; display: inline-flex; gap: 8px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; white-space: nowrap; }
+  .link:hover { color: var(--red); border-color: var(--red); }
+
+  /* Categories as index list */
+  .index { border-top: 2px solid var(--ink); }
+  .row { display: grid; grid-template-columns: 90px 1fr auto 200px; gap: 24px; align-items: center; padding-block: 18px; border-bottom: 1px solid var(--line); text-decoration: none; position: relative; }
+  .row .n { font: 500 13px/1 var(--mono); color: var(--muted); }
+  .row h3 { font-size: clamp(36px, 6vw, 88px); transition: transform .4s cubic-bezier(.2,.8,.2,1), color .2s; }
+  .row .cnt { font: 500 13px/1.3 var(--mono); color: var(--muted); text-align: right; }
+  .row .thumb { width: 200px; aspect-ratio: 16/10; overflow: hidden; background: var(--ink); }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .row:hover h3 { transform: translateX(14px); color: var(--red); }
+  .row:hover .thumb img { transform: scale(1.08); }
+
+  /* Product rail */
+  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr); gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; background: var(--line); border: 1px solid var(--line); }
+  .card { scroll-snap-align: start; background: var(--paper-2); padding: 22px; display: grid; gap: 12px; align-content: start; text-decoration: none; }
+  .card .top { display: flex; justify-content: space-between; font: 500 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .card .top b { color: #1E8E4E; font-weight: 500; }
+  .card img { width: 82%; margin: 12px auto; transition: transform .8s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 18px 20px rgba(17,18,20,.2)); }
+  .card:hover img { transform: rotate(-20deg); }
+  .card h3 { font-size: 30px; }
+  .spec-line { font: 500 12px/1.4 var(--mono); color: var(--ink-2); }
+  .card .price { display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; border-top: 1px solid var(--line); }
+  .card .price b { font: 800 26px/1 var(--display); font-stretch: 110%; }
+  .card .price span { font: 500 12px/1 var(--mono); color: var(--muted); }
+
+  /* Editorial review */
+  .review { background: var(--ink); color: #F4F5F6; }
+  .review .wrap { display: grid; grid-template-columns: 1fr 2.2fr; gap: clamp(24px, 5vw, 80px); padding-block: clamp(64px, 9vw, 128px); }
+  .rating b { font: 900 clamp(96px, 12vw, 180px)/.8 var(--display); font-stretch: 125%; display: block; }
+  .rating .stars { color: var(--red); font-size: 22px; letter-spacing: 3px; margin-top: 16px; }
+  .rating p { font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #A9ACB2; margin-top: 8px; }
+  .big-quote { margin: 0; display: grid; gap: 28px; }
+  .big-quote blockquote { margin: 0; font: 700 clamp(28px, 3.6vw, 52px)/1.12 var(--display); font-stretch: 100%; letter-spacing: -0.02em; text-wrap: balance; }
+  .big-quote figcaption { font: 500 13px/1.5 var(--mono); color: #A9ACB2; }
+  .big-quote figcaption b { color: #fff; font-weight: 500; }
+  .dots { display: flex; gap: 8px; }
+  .dots button { width: 34px; height: 4px; border: 0; background: #44474D; cursor: pointer; padding: 0; }
+  .dots button[aria-current="true"] { background: var(--red); }
+
+  .promises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); }
+  .promise { background: var(--paper-2); padding: 26px; display: grid; gap: 10px; align-content: start; }
+  .promise h3 { font-size: 20px; font-stretch: 110%; }
+  .promise p { color: var(--muted); font-size: 14px; }
+  .promise .label { color: var(--red); }
+
+  .contact { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: end; padding-top: clamp(40px, 6vw, 72px); }
+  .contact h2 { font-size: clamp(40px, 6vw, 96px); }
+  .contact .num { font: 900 clamp(40px, 6vw, 88px)/1 var(--display); font-stretch: 125%; color: var(--red); user-select: all; }
+  .contact p { color: var(--ink-2); margin-top: 12px; max-width: 42ch; }
+
+  footer { margin-top: clamp(64px, 9vw, 120px); border-top: 2px solid var(--ink); padding-block: 32px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; font: 500 12px/1.6 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .foot a { text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+  .foot nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+
+  @media (max-width: 960px) {
+    .nav .wrap { grid-template-columns: auto 1fr; }
+    .nav nav.left { display: none; }
+    .stage { grid-template-columns: 1fr; }
+    .wheel { grid-column: 1; max-width: 360px; margin-inline: auto; width: 100%; }
+    .callout { display: none; }
+    .row { grid-template-columns: 50px 1fr auto; }
+    .row .thumb { display: none; }
+    .review .wrap, .contact { grid-template-columns: 1fr; }
+    .promises { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nav nav.right a:not(.cart) { display: none; }
+    .head { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr auto; }
+    .row .n { display: none; }
+    .promises { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topline">Financing available · <b>$0–$40 down</b> · 100 days same as cash · No credit check</div>
+
+<header class="nav">
+  <div class="wrap">
+    <nav class="left" aria-label="Shop"><a href="#categories">Wheels</a><a href="#categories">Tires</a><a href="#categories">Suspension</a><a href="#lineup">Brands</a></nav>
+    <a class="logo" href="#top">Fitment<span>Lab</span></a>
+    <nav class="right" aria-label="Account"><a href="#reviews">Gallery</a><a href="#contact">972-927-0649</a><a class="cart" href="https://fitmentlabs.com/cart">Cart (<span id="cart">0</span>)</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1>Built to<br><em>fit.</em></h1>
+        <div class="hero-meta">
+          <span class="label">Wheels · Tires · Suspension</span>
+          <p>Over 16,000 wheels and tires, matched to your exact vehicle and checked by a specialist before they ship.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="wheel">
+          <img id="hero-wheel" src="../assets/p-xd-colossus.webp" alt="XD Colossus wheel in matte black">
+          <div class="callout c1"><span class="label">Size</span><b>20×10</b></div>
+          <div class="callout c2"><span class="label">Bolt pattern</span><b>6×135</b></div>
+          <div class="callout c3"><span class="label">Offset</span><b>−18 mm</b></div>
+        </div>
+      </div>
+
+      <div class="finder" id="finder">
+        <span class="label">Find your fitment</span>
+        <div class="sentence">
+          <span>I drive a</span>
+          <select id="s-year" aria-label="Year"></select>
+          <select id="s-make" aria-label="Make"></select>
+          <select id="s-model" aria-label="Model"></select>
+        </div>
+        <div class="result">
+          <div class="facts">
+            <div class="fact"><span class="label">Bolt pattern</span><b id="r-bp">—</b></div>
+            <div class="fact"><span class="label">Center bore</span><b id="r-bore">—</b></div>
+            <div class="fact"><span class="label">Verified sizes</span><b id="r-dia">—</b></div>
+            <div class="fact"><span class="label">Trims</span><b id="r-trims">—</b></div>
+          </div>
+          <a class="btn" id="r-shop" href="https://fitmentlabs.com/collections/wheels">Show wheels that fit <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span><b>4.9★</b> 2,860+ verified reviews</span>
+        <span><b>18,420+</b> verified builds</span>
+        <span><b>Free</b> mount &amp; balance on packages</span>
+        <span><b>Next-day</b> shipping available</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="categories">
+    <div class="wrap">
+      <div class="head"><div><span class="label">Shop by category</span><h2>The catalog.</h2></div><a class="link" href="https://fitmentlabs.com/collections">All categories →</a></div>
+      <div class="index">
+        <a class="row" href="https://fitmentlabs.com/collections/wheels"><span class="n">01</span><h3>Wheels</h3><span class="cnt">14,552<br>products</span><span class="thumb"><img src="../assets/wheels.webp" alt=""></span></a>
+        <a class="row" href="https://fitmentlabs.com/collections/tires"><span class="n">02</span><h3>Tires</h3><span class="cnt">1,572<br>products</span><span class="thumb"><img src="../assets/tires.webp" alt=""></span></a>
+        <a class="row" href="https://fitmentlabs.com/collections/suspension"><span class="n">03</span><h3>Suspension</h3><span class="cnt">Lift &amp;<br>leveling</span><span class="thumb"><img src="../assets/suspension.webp" alt=""></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="lineup" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><span class="label">Ready to ship</span><h2>Popular fitments.</h2></div><a class="link" href="https://fitmentlabs.com/collections/wheels">Shop all wheels →</a></div>
+      <div class="rail" id="rail" tabindex="0" aria-label="Popular wheels, scroll sideways"></div>
+    </div>
+  </section>
+
+  <section class="review" id="reviews">
+    <div class="wrap">
+      <div class="rating"><b>4.9</b><div class="stars" aria-label="4.9 out of 5">★★★★★</div><p>2,860+ verified reviews<br>18,420+ verified builds</p></div>
+      <figure class="big-quote" aria-live="polite">
+        <blockquote id="q-text"></blockquote>
+        <figcaption id="q-who"></figcaption>
+        <div class="dots" id="q-dots" role="group" aria-label="Choose review"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top: clamp(48px, 7vw, 96px)">
+    <div class="promises">
+      <div class="promise"><span class="label">Guarantee</span><h3>Fitment guaranteed</h3><p>Every setup is reviewed by a specialist before fulfillment.</p></div>
+      <div class="promise"><span class="label">Included</span><h3>Mount &amp; balance</h3><p>Free with wheel and tire packages, plus TPMS and lugs.</p></div>
+      <div class="promise"><span class="label">24/7</span><h3>Specialist support</h3><p>Real enthusiasts with real answers on diameter, width and offset.</p></div>
+      <div class="promise"><span class="label">Delivered</span><h3>Ready to install</h3><p>Bolt on at home or at your local shop.</p></div>
+    </div>
+    <div class="contact" id="contact">
+      <div><span class="label">Talk to a specialist</span><h2 style="margin-top:14px">Not sure<br>what fits?</h2></div>
+      <div><span class="num">972-927-0649</span><p>Call or message us any time with your year, make and model. A specialist will dial in the setup with you.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Fitment Lab · Wheels. Tires. Fitment. Dialed in.</span>
+    <nav aria-label="Footer"><a href="https://fitmentlabs.com/pages/financing">Financing</a><a href="https://fitmentlabs.com/policies/shipping-policy">Shipping</a><a href="https://fitmentlabs.com/policies/refund-policy">Returns</a><a href="https://fitmentlabs.com/pages/contact">Contact</a></nav>
+    <span>Redesign concept · links go to the live store</span>
+  </div>
+</footer>
+
+<script id="fitment-data" type="application/json">{"version":3,"generated":"2026-09-12","note":"Generation-level vehicle fitment for Fitment Labs. Year ranges are GENERATION boundaries, not nameplate lifespans, so a 2003 Altima cannot match wheels curated for the 2013-2018 car. bps = bolt patterns; gens = [makeIdx, modelIdx, yearStart, yearEnd, bpIdx, diameters, boreMm, trims].","makes":["Acura","Audi","BMW","Cadillac","Chevrolet","Dodge","Ford","GMC","Honda","Hyundai","Infiniti","Jeep","Kia","Lexus","Lincoln","Mercedes-Benz","Nissan","Ram","Subaru","Tesla","Toyota","Volkswagen"],"models":{"0":["MDX","TL"],"1":["A4","Q5","Q7"],"2":["3 Series","5 Series","X5"],"3":["CTS","Escalade","Escalade ESV"],"4":["Camaro","Colorado","Corvette","Equinox","Silverado 1500","Silverado 2500 HD","Silverado 3500 HD","Suburban","Tahoe","Traverse"],"5":["Challenger","Charger","Durango","Ram 1500"],"6":["Bronco","Expedition","Explorer","F-150","F-250 Super Duty","F-350 Super Duty","Mustang","Ranger"],"7":["Canyon","Sierra 1500","Sierra 2500 HD","Sierra 3500 HD","Yukon"],"8":["Accord","CR-V","Civic","Pilot","Ridgeline"],"9":["Elantra","Santa Fe","Sonata","Tucson"],"10":["Q50","QX80"],"11":["Cherokee","Gladiator","Grand Cherokee","Wrangler"],"12":["Optima","Sorento","Telluride"],"13":["GX","IS","LX","RX"],"14":["Navigator"],"15":["C-Class","E-Class","G-Class"],"16":["370Z","Altima","Frontier","Maxima","Rogue","Titan"],"17":["1500","2500","3500"],"18":["Crosstrek","Forester","Outback","WRX"],"19":["Model 3","Model S","Model X","Model Y"],"20":["4Runner","Camry","Corolla","Highlander","RAV4","Sequoia","Supra","Tacoma","Tundra"],"21":["Atlas","Golf","Jetta"]},"bps":["5x100","5x110","5x112","5x114.3","5x115","5x120","5x120.65","5x127","5x130","5x139.7","5x150","6x114.3","6x120","6x135","6x139.7","8x165.1","8x170","8x180"],"gens":[[0,0,2007,2026,5,[18,19,20],64.1,["Base","Tech","A-Spec","Advance","Type S"]],[0,1,2004,2014,5,[17,18,19],64.1,["Base","Tech","SH-AWD","Type-S"]],[1,0,2009,2026,2,[17,18,19],66.6,["Premium","Premium Plus","Prestige","S4"]],[1,1,2009,2026,2,[18,19,20,21],66.6,["Premium","Premium Plus","Prestige","SQ5"]],[1,2,2007,2026,2,[18,19,20,21,22],66.6,["Premium","Premium Plus","Prestige","SQ7"]],[2,0,2012,2018,5,[17,18,19],72.6,["320i","328i","330i","335i","340i","M3"]],[2,0,2019,2026,2,[17,18,19,20],66.6,["330i","M340i","M3"]],[2,1,2011,2016,5,[17,18,19,20],72.6,["528i","535i","550i","M5"]],[2,1,2017,2026,2,[18,19,20],66.6,["530i","540i","M550i","M5"]],[2,2,2014,2018,5,[18,19,20,21],74.1,["sDrive35i","xDrive35i","xDrive50i","M"]],[2,2,2019,2026,2,[19,20,21,22],66.6,["sDrive40i","xDrive40i","M50i","X5 M"]],[3,0,2008,2019,5,[17,18,19,20],66.9,["Base","Luxury","Performance","Premium","V"]],[3,1,2007,2014,14,[18,20,22,24],78.1,["Base","Luxury","Premium","Platinum"]],[3,1,2015,2020,14,[20,22,24],78.1,["Base","Luxury","Premium","Platinum"]],[3,1,2021,2026,14,[20,22,24],78.1,["Luxury","Premium Luxury","Sport","Platinum","V"]],[3,2,2015,2026,14,[20,22,24],78.1,["Luxury","Premium Luxury","Sport","Platinum"]],[4,0,2010,2015,5,[18,19,20,21],66.9,["LS","LT","SS","ZL1","Z28"]],[4,0,2016,2024,5,[18,19,20],66.9,["LS","LT","SS","ZL1"]],[4,1,2015,2022,12,[16,17,18],66.9,["Base","WT","LT","Z71","ZR2"]],[4,1,2023,2026,12,[17,18,20],66.9,["WT","LT","Trail Boss","Z71","ZR2"]],[4,2,2014,2019,6,[18,19,20],70.3,["Stingray","Grand Sport","Z06","ZR1"]],[4,2,2020,2026,6,[19,20,21],70.3,["Stingray","Z06","E-Ray","ZR1"]],[4,3,2018,2026,3,[17,18,19,20],67.1,["L","LS","LT","RS","Premier"]],[4,4,1999,2006,14,[16,17,18,20],78.1,["WT","LS","LT","Z71"]],[4,4,2007,2013,14,[17,18,20,22],78.1,["WT","LS","LT","Z71","LTZ"]],[4,4,2014,2018,14,[17,18,20,22,24],78.1,["WT","LS","LT","Z71","LTZ","High Country"]],[4,4,2019,2026,14,[17,18,20,22,24],78.1,["WT","Custom","LT","RST","LT Trail Boss","LTZ","High Country","ZR2"]],[4,5,2001,2010,15,[16,17,18,20],116.7,["WT","LS","LT","LTZ"]],[4,5,2011,2019,17,[17,18,20,22],124.2,["WT","LT","LTZ","High Country"]],[4,5,2020,2026,17,[17,18,20,22],124.2,["WT","Custom","LT","LTZ","High Country","ZR2"]],[4,6,2011,2019,17,[17,18,20,22],124.2,["WT","LT","LTZ","High Country"]],[4,6,2020,2026,17,[17,18,20,22],124.2,["WT","LT","LTZ","High Country"]],[4,7,2007,2014,14,[17,18,20,22],78.1,["LS","LT","LTZ"]],[4,7,2015,2020,14,[18,20,22,24],78.1,["LS","LT","Z71","Premier"]],[4,7,2021,2026,14,[18,20,22,24],78.1,["LS","LT","RST","Z71","Premier","High Country"]],[4,8,2007,2014,14,[17,18,20,22],78.1,["LS","LT","LTZ"]],[4,8,2015,2020,14,[18,20,22,24],78.1,["LS","LT","Z71","Premier"]],[4,8,2021,2026,14,[18,20,22,24],78.1,["LS","LT","RST","Z71","Premier","High Country"]],[4,9,2018,2026,5,[18,20,22],67.1,["L","LS","LT","RS","Premier","High Country"]],[5,0,2008,2023,4,[18,19,20],71.6,["SXT","GT","R/T","Scat Pack","SRT Hellcat","Demon"]],[5,1,2006,2010,4,[17,18,20],71.6,["SE","SXT","R/T","SRT8"]],[5,1,2011,2023,4,[17,18,19,20],71.6,["SXT","GT","R/T","Scat Pack","SRT Hellcat"]],[5,2,2011,2026,7,[18,20],71.6,["SXT","GT","Citadel","R/T","SRT"]],[5,3,2002,2005,9,[17,20],77.8,["ST","SLT","Laramie"]],[6,0,2021,2026,14,[16,17,18],93.1,["Base","Big Bend","Black Diamond","Outer Banks","Badlands","Wildtrak","Raptor"]],[6,1,2007,2017,13,[17,18,20,22],87.1,["XL","XLT","Limited","King Ranch"]],[6,1,2018,2026,13,[18,20,22],87.1,["XL","XLT","Limited","King Ranch","Platinum"]],[6,2,2011,2019,3,[18,20],63.4,["Base","XLT","Limited","Sport","Platinum"]],[6,2,2020,2026,3,[18,20,21],63.4,["Base","XLT","Limited","ST","Platinum"]],[6,3,2004,2008,13,[17,18,20],87.1,["XL","XLT","Lariat","King Ranch"]],[6,3,2009,2014,13,[17,18,20,22],87.1,["XL","XLT","Lariat","King Ranch","Platinum","SVT Raptor"]],[6,3,2015,2020,13,[17,18,20,22],87.1,["XL","XLT","Lariat","King Ranch","Platinum","Limited","Raptor"]],[6,3,2021,2026,13,[17,18,20,22],87.1,["XL","XLT","Lariat","King Ranch","Platinum","Limited","Tremor","Raptor"]],[6,4,2005,2010,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch"]],[6,4,2011,2016,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch","Platinum"]],[6,4,2017,2022,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch","Platinum","Limited"]],[6,4,2023,2026,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch","Platinum","Limited"]],[6,5,2005,2010,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch"]],[6,5,2011,2016,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch","Platinum"]],[6,5,2017,2022,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch","Platinum","Limited"]],[6,5,2023,2026,16,[17,18,20,22],125.0,["XL","XLT","Lariat","King Ranch","Platinum","Limited"]],[6,6,2005,2014,3,[17,18,19,20],70.5,["V6","GT","Boss 302","Shelby GT500"]],[6,6,2015,2023,3,[17,18,19,20],70.5,["EcoBoost","GT","Mach 1","Shelby GT350","Shelby GT500"]],[6,6,2024,2026,3,[17,18,19,20],70.5,["EcoBoost","GT","Dark Horse"]],[6,7,2019,2023,14,[16,17,18],93.1,["XL","XLT","Lariat","Tremor"]],[6,7,2024,2026,14,[17,18],93.1,["XL","XLT","Lariat","Raptor"]],[7,0,2015,2022,12,[16,17,18],66.9,["Base","SLE","SLT","AT4","Denali"]],[7,0,2023,2026,12,[17,18,20],66.9,["Elevation","AT4","Denali","AT4X"]],[7,1,2007,2013,14,[17,18,20,22],78.1,["Base","SLE","SLT","Denali"]],[7,1,2014,2018,14,[17,18,20,22,24],78.1,["Base","SLE","SLT","Denali"]],[7,1,2019,2026,14,[17,18,20,22,24],78.1,["Pro","SLE","Elevation","SLT","AT4","Denali","AT4X"]],[7,2,2001,2010,15,[16,17,18,20],116.7,["Base","SLE","SLT","Denali"]],[7,2,2011,2019,17,[17,18,20,22],124.2,["Base","SLE","SLT","Denali"]],[7,2,2020,2026,17,[17,18,20,22],124.2,["Pro","SLE","SLT","AT4","Denali"]],[7,3,2011,2019,17,[17,18,20,22],124.2,["Base","SLE","SLT","Denali"]],[7,3,2020,2026,17,[17,18,20,22],124.2,["Pro","SLE","SLT","AT4","Denali"]],[7,4,2007,2014,14,[17,18,20,22],78.1,["SLE","SLT","Denali"]],[7,4,2015,2020,14,[18,20,22,24],78.1,["SLE","SLT","Denali"]],[7,4,2021,2026,14,[18,20,22,24],78.1,["SLE","SLT","AT4","Denali"]],[8,0,2013,2026,3,[16,17,18,19],64.1,["LX","Sport","EX","EX-L","Touring"]],[8,1,2012,2026,3,[17,18,19],64.1,["LX","EX","EX-L","Touring","Sport"]],[8,2,2006,2015,3,[16,17,18],64.1,["DX","LX","EX","EX-L","Si"]],[8,2,2016,2021,3,[16,17,18],64.1,["LX","Sport","EX","EX-L","Touring","Si","Type R"]],[8,2,2022,2026,3,[16,17,18],64.1,["LX","Sport","EX","Touring","Si","Type R"]],[8,3,2009,2026,5,[18,20],64.1,["LX","EX","EX-L","Touring","Elite","TrailSport"]],[8,4,2017,2026,5,[18,20],64.1,["Sport","RTL","RTL-E","Black Edition","TrailSport"]],[9,0,2011,2026,3,[15,16,17,18],67.1,["SE","SEL","Limited","N Line","N"]],[9,1,2013,2026,3,[17,18,19,20],67.1,["SE","SEL","Limited","Calligraphy"]],[9,2,2011,2026,3,[16,17,18,19],67.1,["SE","SEL","Limited","N Line"]],[9,3,2016,2026,3,[17,18,19],67.1,["SE","SEL","Limited","N Line"]],[10,0,2014,2026,3,[17,18,19,20],66.1,["Pure","Luxe","Sport","Red Sport 400"]],[10,1,2011,2026,14,[20,22],77.8,["Luxe","Premium Select","Sensory"]],[11,0,2014,2023,1,[17,18,19],65.1,["Latitude","Limited","Trailhawk","Overland"]],[11,1,2020,2026,7,[17,18,20],71.5,["Sport","Willys","Overland","Rubicon","Mojave"]],[11,2,2005,2010,7,[17,18,20],71.6,["Laredo","Limited","Overland","SRT8"]],[11,2,2011,2021,7,[17,18,20],71.6,["Laredo","Limited","Overland","Summit","Trailhawk","SRT","Trackhawk"]],[11,2,2022,2026,7,[17,18,20,21],71.6,["Laredo","Altitude","Limited","Overland","Summit"]],[11,3,1997,2006,3,[15,16,17],71.5,["SE","Sport","Sahara","Rubicon"]],[11,3,2007,2018,7,[16,17,18,20],71.5,["Sport","Sahara","Rubicon"]],[11,3,2018,2026,7,[17,18,20],71.5,["Sport","Sport S","Willys","Sahara","Rubicon","392"]],[12,0,2011,2020,3,[16,17,18],67.1,["LX","EX","SX","SXL"]],[12,1,2011,2026,3,[17,18,19,20],67.1,["LX","S","EX","SX","X-Line"]],[12,2,2020,2026,3,[18,20],67.1,["LX","S","EX","SX","X-Pro"]],[13,0,2010,2023,14,[17,18,20],106.1,["Base","Premium","Luxury"]],[13,0,2024,2026,14,[18,20,22],106.1,["Premium","Overtrail","Luxury"]],[13,1,2006,2026,3,[17,18,19],60.1,["IS250","IS300","IS350","IS500","F Sport"]],[13,2,2008,2021,10,[18,20,21],110.0,["LX570"]],[13,3,2010,2026,3,[18,19,20,21],60.1,["RX350","RX450h","F Sport"]],[14,0,2007,2017,13,[18,20,22],87.1,["Base","Select","Reserve"]],[14,0,2018,2026,13,[20,22],87.1,["Standard","Reserve","Black Label"]],[15,0,2015,2026,2,[17,18,19],66.6,["C300","C43 AMG","C63 AMG"]],[15,1,2010,2026,2,[17,18,19,20],66.6,["E350","E450","E53 AMG","E63 AMG"]],[15,2,2002,2026,8,[18,19,20,22],84.1,["G550","G63 AMG"]],[16,0,2009,2020,3,[18,19],66.1,["Base","Sport","Touring","NISMO"]],[16,1,2007,2012,3,[16,17,18],66.1,["S","SV","SL","SR"]],[16,1,2013,2018,3,[16,17,18,19],66.1,["S","SV","SL","SR"]],[16,1,2019,2026,3,[17,18,19],66.1,["S","SV","SR","SL","Platinum"]],[16,2,2005,2021,11,[16,17,18],66.1,["S","SV","PRO-4X","SL"]],[16,2,2022,2026,11,[16,17,18],66.1,["S","SV","PRO-4X","PRO-X"]],[16,3,2009,2023,3,[18,19,20],66.1,["S","SV","SL","SR","Platinum"]],[16,4,2014,2026,3,[17,18,19],66.1,["S","SV","SL","Platinum"]],[16,5,2004,2015,14,[17,18,20],77.8,["S","SV","PRO-4X","SL"]],[16,5,2016,2024,14,[18,20],77.8,["S","SV","PRO-4X","SL","Platinum Reserve"]],[17,0,2006,2011,9,[17,18,20],77.8,["ST","SLT","Sport","Laramie"]],[17,0,2012,2018,9,[17,18,20,22],77.8,["Tradesman","Express","SLT","Big Horn","Laramie","Rebel","Limited"]],[17,0,2019,2026,9,[18,20,22],77.8,["Tradesman","Big Horn","Laramie","Rebel","Limited","TRX"]],[17,1,2010,2013,15,[17,18,20],121.3,["ST","SLT","Laramie","Power Wagon"]],[17,1,2014,2026,15,[17,18,20,22],121.3,["Tradesman","Big Horn","Laramie","Power Wagon","Limited"]],[17,2,2010,2013,15,[17,18,20],121.3,["ST","SLT","Laramie"]],[17,2,2014,2026,15,[17,18,20,22],121.3,["Tradesman","Big Horn","Laramie","Limited"]],[18,0,2013,2026,0,[17,18],56.1,["Base","Premium","Sport","Limited","Wilderness"]],[18,1,2014,2026,3,[17,18],56.1,["Base","Premium","Sport","Limited","Touring","Wilderness"]],[18,2,2010,2026,3,[17,18],56.1,["Base","Premium","Limited","Touring","Onyx","Wilderness"]],[18,3,2015,2021,3,[17,18],56.1,["Base","Premium","Limited","STI"]],[18,3,2022,2026,3,[17,18],56.1,["Base","Premium","Limited","GT","tS"]],[19,0,2017,2026,3,[18,19,20],64.1,["Standard Range","Long Range","Performance"]],[19,1,2012,2026,5,[19,20,21],64.1,["Long Range","Plaid"]],[19,2,2016,2026,5,[20,21,22],64.1,["Long Range","Plaid"]],[19,3,2020,2026,3,[19,20,21],64.1,["Long Range","Performance"]],[20,0,2010,2024,14,[17,18,20],106.1,["SR5","TRD Sport","TRD Off-Road","Limited","TRD Pro"]],[20,0,2025,2026,14,[17,18,20],106.1,["SR5","TRD Sport","TRD Off-Road","Limited","Platinum","Trailhunter","TRD Pro"]],[20,1,2012,2017,3,[16,17,18],60.1,["L","LE","SE","XLE","XSE"]],[20,1,2018,2026,3,[17,18,19],60.1,["LE","SE","XLE","XSE","TRD"]],[20,2,2014,2026,3,[15,16,17,18],60.1,["L","LE","SE","XLE","XSE"]],[20,3,2014,2026,3,[18,19,20],60.1,["L","LE","XLE","XSE","Limited","Platinum"]],[20,4,2019,2026,3,[17,18,19],60.1,["LE","XLE","Adventure","TRD Off-Road","Limited"]],[20,5,2008,2022,10,[18,20,22],110.0,["SR5","Limited","Platinum","TRD Pro"]],[20,5,2023,2026,14,[18,20,22],106.1,["SR5","Limited","Platinum","1794","TRD Pro","Capstone"]],[20,6,2020,2026,2,[18,19],66.6,["2.0","3.0","3.0 Premium","A91"]],[20,7,2005,2015,14,[16,17,18],106.1,["Base","PreRunner","SR5","TRD Sport","TRD Off-Road"]],[20,7,2016,2023,14,[16,17,18],106.1,["SR","SR5","TRD Sport","TRD Off-Road","Limited","TRD Pro"]],[20,7,2024,2026,14,[17,18],106.1,["SR","SR5","TRD PreRunner","TRD Sport","TRD Off-Road","Limited","Trailhunter","TRD Pro"]],[20,8,2007,2021,10,[18,20,22],110.0,["SR","SR5","Limited","Platinum","1794","TRD Pro"]],[20,8,2022,2026,14,[18,20,22],106.1,["SR","SR5","Limited","Platinum","1794","TRD Pro","Capstone"]],[21,0,2018,2026,2,[18,20,21],57.1,["S","SE","SEL","SEL Premium"]],[21,1,2010,2026,2,[17,18,19],57.1,["S","SE","SEL","GTI","R"]],[21,2,2011,2026,2,[16,17,18],57.1,["S","SE","SEL","GLI"]]]}</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('fitment-data').textContent);
+  const $ = id => document.getElementById(id);
+  const gens = D.gens.map(g => ({ make: D.makes[g[0]], model: D.models[g[0]][g[1]], y0: g[2], y1: g[3], bp: D.bps[g[4]], dia: g[5], bore: g[6], trims: g[7] }));
+  const years = [...new Set(gens.flatMap(g => Array.from({ length: g.y1 - g.y0 + 1 }, (_, i) => g.y0 + i)))].sort((a, b) => b - a);
+  const st = { year: '2022', make: 'Ram', model: '1500' };
+  const fill = (el, list, v) => { el.replaceChildren(...list.map(x => new Option(x, x))); if (list.includes(v)) el.value = v; };
+  function update() {
+    fill($('s-year'), years.map(String), st.year); st.year = $('s-year').value;
+    const y = +st.year, inY = gens.filter(g => g.y0 <= y && y <= g.y1);
+    fill($('s-make'), [...new Set(inY.map(g => g.make))].sort(), st.make); st.make = $('s-make').value;
+    fill($('s-model'), [...new Set(inY.filter(g => g.make === st.make).map(g => g.model))].sort(), st.model); st.model = $('s-model').value;
+    const g = inY.find(x => x.make === st.make && x.model === st.model);
+    fit();
+    $('r-bp').textContent = g.bp;
+    $('r-bore').textContent = g.bore.toFixed(1) + ' mm';
+    $('r-dia').textContent = g.dia.map(d => d + '"').join(' · ');
+    $('r-trims').textContent = g.trims.length;
+    $('r-trims').title = g.trims.join(', ');
+    $('r-shop').firstChild.textContent = `Show ${g.bp} wheels `;
+  }
+  // Size each select to its chosen option so the sentence reads naturally
+  const ctx = document.createElement('canvas').getContext('2d');
+  function fit() {
+    ['s-year', 's-make', 's-model'].forEach(id => {
+      const el = $(id), cs = getComputedStyle(el);
+      ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      el.style.width = Math.ceil(ctx.measureText(el.value).width * 1.12 + 16) + 'px';
+    });
+  }
+  document.fonts && document.fonts.ready.then(fit);
+  ['year', 'make', 'model'].forEach(k => $('s-' + k).addEventListener('change', e => { st[k] = e.target.value; update(); }));
+  update();
+
+  // Wheel rotates as you scroll
+  const w = $('hero-wheel');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    addEventListener('scroll', () => { w.style.transform = `rotate(${scrollY * 0.12}deg)`; }, { passive: true });
+  }
+
+  const P = [
+    ['XD', 'Colossus', '20×10', '6×135', '−18', 532, 'p-xd-colossus.webp'],
+    ['Fuel 1PC', 'Ascend', '17×8.5', '5×127', '+25', 320, 'p-fuel-ascend.webp'],
+    ['Asanti Black', 'Viceroy', '20×9', '5×112', '+27', 530, 'p-asanti-viceroy.webp'],
+    ['Black Rhino', 'Graz', '17×8.5', '6×139.7', '+0', 423, 'p-blackrhino-graz.webp'],
+    ['Motegi', 'MR151', '18×9.5', '5×114.3', '+15', 268, 'p-motegi-mr151.webp'],
+    ['OE Wheels', 'CV43', '22×9', '', '', 277, 'p-cv43.webp'],
+  ];
+  $('rail').replaceChildren(...P.map(([b, n, s, bp, off, price, img]) => {
+    const a = document.createElement('a'); a.className = 'card'; a.href = 'https://fitmentlabs.com/collections/wheels';
+    a.innerHTML = `<div class="top"><span>${b}</span><b>● In stock</b></div><img src="../assets/${img}" alt="${b} ${n} wheel"><h3>${n}</h3>
+      <div class="spec-line">${[s, bp, off && off + ' mm'].filter(Boolean).join(' · ')}</div><div class="price"><b>$${price}</b><span>per wheel</span></div>`;
+    return a;
+  }));
+
+  const Q = [
+    ['Perfect fitment and the support team actually knows their stuff. The package arrived ready to bolt on.', 'Drew M.', '2022 Ram 1500 · Fuel Rebel 20×10'],
+    ['Third set of wheels I’ve ordered here. Always spot on with the fitment and zero surprises.', 'Jessica R.', '2019 Ford F-150 · Vossen HF-5 20×9'],
+    ['The gallery made the stance easy to picture. Dialed in exactly how I wanted with no rubbing.', 'Tyler S.', '2021 Toyota Tacoma · Ferrada FR4 18×9'],
+  ];
+  let qi = 0, timer;
+  const show = i => {
+    qi = i; $('q-text').textContent = '“' + Q[i][0] + '”';
+    $('q-who').innerHTML = `<b>${Q[i][1]}</b> · ${Q[i][2]} · Verified build`;
+    [...$('q-dots').children].forEach((d, j) => d.setAttribute('aria-current', j === i));
+  };
+  $('q-dots').replaceChildren(...Q.map((q, i) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Review from ' + q[1]); b.onclick = () => { clearInterval(timer); show(i); }; return b; }));
+  show(0);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => show((qi + 1) % Q.length), 6000);
+})();
+</script>
+</body>
+</html>

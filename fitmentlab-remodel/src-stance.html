@@ -1,0 +1,358 @@
+<title>Fitment Lab Stance Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0E0F12;
+    --panel: #15171B;
+    --panel-2: #1C1F24;
+    --line: #2A2D34;
+    --grid: rgba(255,255,255,.035);
+    --text: #EDEEF0;
+    --muted: #8B9099;
+    --red: #E0202B;
+    --ok: #3DDC84;
+    --warn: #F5B83D;
+    --bad: #FF5A5F;
+    --display: "Chakra Petch", "Arial Narrow", sans-serif;
+    --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --gutter: clamp(16px, 3.5vw, 40px);
+    --max: 1320px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--text); font: 400 16px/1.55 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    background: linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 32px 32px, var(--bg); }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; text-transform: uppercase; line-height: .95; margin: 0; letter-spacing: .01em; text-wrap: balance; }
+  p { margin: 0; }
+  .tag { font: 500 11px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .tag.red { color: var(--red); }
+
+  .bar { border-bottom: 1px solid var(--line); background: rgba(14,15,18,.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; }
+  .bar .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+  .logo { font: 700 20px/1 var(--display); text-transform: uppercase; letter-spacing: .06em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo i { width: 10px; height: 10px; background: var(--red); transform: rotate(45deg); }
+  .bar nav { display: flex; gap: 22px; font: 500 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .bar nav a { text-decoration: none; }
+  .bar nav a:hover { color: var(--text); }
+  .bar .fin { margin-left: auto; font: 500 12px/1.2 var(--mono); color: var(--muted); text-align: right; }
+  .bar .fin b { color: var(--text); font-weight: 500; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 700 14px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; text-decoration: none; background: var(--red); color: #fff; border: 0; padding: 15px 22px; cursor: pointer; transition: filter .2s; }
+  .btn:hover { filter: brightness(1.15); }
+  .btn.ghost { background: transparent; box-shadow: inset 0 0 0 1px var(--line); color: var(--text); }
+
+  /* Intro */
+  .intro { padding-block: clamp(36px, 6vw, 72px) clamp(20px, 3vw, 32px); display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: end; }
+  .intro h1 { font-size: clamp(46px, 7.4vw, 110px); }
+  .intro h1 span { color: var(--red); }
+  .intro p { color: #C5C9D0; font-size: 18px; max-width: 44ch; }
+
+  /* Console */
+  .console { display: grid; grid-template-columns: 340px 1fr 320px; border: 1px solid var(--line); background: var(--panel); }
+  .pane { padding: 22px; display: grid; gap: 20px; align-content: start; }
+  .pane + .pane { border-left: 1px solid var(--line); }
+  .pane-title { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .field { display: grid; gap: 8px; }
+  .field-top { display: flex; justify-content: space-between; align-items: baseline; }
+  .field-top output { font: 700 20px/1 var(--mono); font-variant-numeric: tabular-nums; }
+  select { width: 100%; font: 500 15px/1.2 var(--body); color: var(--text); background: var(--bg); border: 1px solid var(--line); padding: 11px 12px; border-radius: 0; }
+  select:focus { outline: none; border-color: var(--red); }
+  input[type=range] { width: 100%; accent-color: var(--red); height: 24px; }
+  .ticks { display: flex; justify-content: space-between; font: 400 10px/1 var(--mono); color: var(--muted); }
+  .stock { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .stock div { background: var(--bg); padding: 10px; display: grid; gap: 4px; }
+  .stock b { font: 700 15px/1 var(--mono); }
+  .note { font: 400 12px/1.5 var(--mono); color: var(--muted); }
+
+  .viz { position: relative; padding: 0; background: var(--bg); }
+  .viz svg { width: 100%; height: 100%; display: block; min-height: 360px; }
+  .viz .axis { font: 500 10px var(--mono); letter-spacing: .12em; fill: var(--muted); }
+  .viz-legend { position: absolute; left: 16px; bottom: 14px; display: flex; gap: 16px; font: 400 11px/1 var(--mono); color: var(--muted); flex-wrap: wrap; }
+  .viz-legend i { display: inline-block; width: 16px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+
+  .verdict { padding: 18px; border: 1px solid var(--line); display: grid; gap: 8px; background: var(--bg); }
+  .verdict h3 { font-size: 30px; }
+  .verdict p { color: #C5C9D0; font-size: 15px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; font: 700 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+  .chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+  .reads { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .reads div { background: var(--bg); padding: 14px; display: grid; gap: 6px; }
+  .reads b { font: 700 26px/1 var(--mono); font-variant-numeric: tabular-nums; }
+  .reads small { font: 400 11px/1.3 var(--mono); color: var(--muted); }
+
+  /* Matches */
+  section.block { padding-block: clamp(56px, 8vw, 110px); }
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+  .head h2 { font-size: clamp(36px, 5vw, 72px); margin-top: 12px; }
+  .head p { color: var(--muted); max-width: 46ch; margin-top: 10px; }
+  .matches { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .m { border: 1px solid var(--line); background: var(--panel); display: grid; grid-template-rows: auto 1fr; transition: border-color .2s, opacity .2s; }
+  .m:hover { border-color: #3D414A; }
+  .m.dim { opacity: .38; }
+  .m-img { aspect-ratio: 4/3; display: grid; place-items: center; background: radial-gradient(circle at 50% 45%, #262930, var(--panel) 70%); border-bottom: 1px solid var(--line); position: relative; }
+  .m-img img { width: 62%; transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+  .m:hover .m-img img { transform: rotate(-16deg); }
+  .m-img .fit { position: absolute; top: 12px; left: 12px; }
+  .m-body { padding: 16px; display: grid; gap: 10px; align-content: start; }
+  .m h3 { font-size: 22px; }
+  .m .spec { font: 400 12px/1.4 var(--mono); color: var(--muted); }
+  .m .row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .m .row b { font: 700 20px/1 var(--mono); }
+  .m .row span { font: 400 11px/1.3 var(--mono); color: var(--muted); text-align: right; }
+  .m button { font: 700 12px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; background: none; color: var(--text); border: 1px solid var(--line); padding: 10px 12px; cursor: pointer; }
+  .m button:hover { background: var(--red); border-color: var(--red); }
+
+  /* Package total */
+  .package { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; }
+  .pkg { border: 1px solid var(--line); background: var(--panel); padding: clamp(22px, 3vw, 36px); display: grid; gap: 14px; align-content: start; }
+  .lines { display: grid; gap: 10px; font: 400 14px/1.3 var(--mono); }
+  .lines div { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+  .lines .free { color: var(--ok); }
+  .total { display: flex; justify-content: space-between; align-items: baseline; }
+  .total b { font: 700 clamp(36px, 4vw, 56px)/1 var(--mono); font-variant-numeric: tabular-nums; }
+  .fin-card { border: 1px solid var(--red); background: linear-gradient(160deg, rgba(224,32,43,.16), transparent 60%), var(--panel); padding: clamp(22px, 3vw, 36px); display: grid; gap: 14px; align-content: start; }
+  .fin-card h3 { font-size: clamp(28px, 3vw, 40px); }
+  .fin-card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font: 500 14px/1.4 var(--mono); }
+  .fin-card li::before { content: "▸ "; color: var(--red); }
+
+  /* Trust strip */
+  .trust { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: var(--panel); }
+  .trust div { padding: 22px; display: grid; gap: 6px; }
+  .trust div + div { border-left: 1px solid var(--line); }
+  .trust b { font: 700 clamp(28px, 3vw, 40px)/1 var(--display); }
+  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+  .q { border: 1px solid var(--line); background: var(--panel); padding: 22px; margin: 0; display: grid; gap: 16px; align-content: space-between; }
+  .q blockquote { margin: 0; font-size: 17px; }
+  .q figcaption { font: 400 12px/1.5 var(--mono); color: var(--muted); }
+  .q figcaption b { color: var(--text); font-weight: 500; display: block; }
+
+  footer { margin-top: clamp(56px, 8vw, 110px); border-top: 1px solid var(--line); padding-block: 28px; }
+  .foot { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; font: 400 12px/1.5 var(--mono); color: var(--muted); }
+  .foot b { color: var(--text); font-weight: 500; user-select: all; }
+
+  @media (max-width: 1140px) {
+    .console { grid-template-columns: 1fr 1fr; }
+    .viz { grid-column: 1 / -1; grid-row: 1; border-bottom: 1px solid var(--line); }
+    .pane.controls { border-left: 0; }
+    .bar nav { display: none; }
+  }
+  @media (max-width: 760px) {
+    .intro, .package { grid-template-columns: 1fr; }
+    .console { grid-template-columns: 1fr; }
+    .pane + .pane { border-left: 0; border-top: 1px solid var(--line); }
+    .trust { grid-template-columns: 1fr 1fr; }
+    .trust div:nth-child(3) { border-left: 0; }
+    .trust div:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .quotes { grid-template-columns: 1fr; }
+    .bar .fin { display: none; }
+    .bar .btn { margin-left: auto; }
+  }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top"><i aria-hidden="true"></i>Fitment Lab</a>
+    <nav aria-label="Primary"><a href="#lab">Stance lab</a><a href="#matches">Wheels</a><a href="#package">Packages</a><a href="#proof">Reviews</a></nav>
+    <span class="fin"><b>$0–$40 down</b> · 100 days no interest<br>No credit check</span>
+    <a class="btn" href="#package">Build package</a>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <div class="intro">
+    <div>
+      <span class="tag red">Stance lab · v1</span>
+      <h1 style="margin-top:16px">See the stance<br><span>before you buy.</span></h1>
+    </div>
+    <p>Pick your truck, then dial in diameter, width and offset. The lab shows how far the wheel pokes, how much it tucks, and which in-stock wheels fit your bolt pattern.</p>
+  </div>
+
+  <div class="console" id="lab">
+    <div class="pane controls">
+      <div class="pane-title"><span class="tag">01 · Vehicle</span></div>
+      <div class="field"><label class="tag" for="veh">Your truck</label><select id="veh"></select></div>
+      <div class="stock" aria-label="Typical stock wheel">
+        <div><span class="tag">Stock size</span><b id="st-size">—</b></div>
+        <div><span class="tag">Offset</span><b id="st-off">—</b></div>
+        <div><span class="tag">Bolt</span><b id="st-bp">—</b></div>
+      </div>
+      <p class="note">Typical OE setup. Check the sticker in your door jamb or ask a specialist to confirm yours.</p>
+
+      <div class="pane-title"><span class="tag">02 · New wheel</span></div>
+      <div class="field"><div class="field-top"><label class="tag" for="dia">Diameter</label><output id="o-dia" for="dia"></output></div><input type="range" id="dia" min="17" max="26" step="1"><div class="ticks"><span>17"</span><span>20"</span><span>22"</span><span>24"</span><span>26"</span></div></div>
+      <div class="field"><div class="field-top"><label class="tag" for="wid">Width</label><output id="o-wid" for="wid"></output></div><input type="range" id="wid" min="7" max="14" step="0.5"><div class="ticks"><span>7"</span><span>9"</span><span>10.5"</span><span>12"</span><span>14"</span></div></div>
+      <div class="field"><div class="field-top"><label class="tag" for="off">Offset</label><output id="o-off" for="off"></output></div><input type="range" id="off" min="-76" max="50" step="1"><div class="ticks"><span>−76</span><span>−44</span><span>−18</span><span>0</span><span>+25</span><span>+50</span></div></div>
+    </div>
+
+    <div class="viz" aria-live="polite">
+      <svg id="section" viewBox="0 0 520 400" role="img" aria-label="Cross-section of new wheel compared with stock"></svg>
+      <div class="viz-legend"><span><i style="border-color:#E0202B"></i>New wheel</span><span><i style="border-color:#8B9099; border-top-style:dashed"></i>Stock</span><span><i style="border-color:#F5B83D"></i>Fender line (est.)</span></div>
+    </div>
+
+    <div class="pane">
+      <div class="pane-title"><span class="tag">03 · Readout</span></div>
+      <div class="verdict"><span class="chip" id="v-chip">—</span><h3 id="v-title">—</h3><p id="v-text"></p></div>
+      <div class="reads">
+        <div><span class="tag">Poke</span><b id="r-poke">—</b><small>vs stock, outer lip</small></div>
+        <div><span class="tag">Inner</span><b id="r-inner">—</b><small>vs stock, toward suspension</small></div>
+        <div><span class="tag">Backspacing</span><b id="r-bs">—</b><small>hub face to inner lip</small></div>
+        <div><span class="tag">Wider by</span><b id="r-wide">—</b><small>total, vs stock</small></div>
+      </div>
+      <a class="btn" href="#matches">See wheels that fit ↓</a>
+    </div>
+  </div>
+
+  <section class="block" id="matches">
+    <div class="head"><div><span class="tag">In stock · ready to ship</span><h2 id="m-title">Wheels for your bolt pattern.</h2><p>Wheels that match your truck's bolt pattern are highlighted. Tap a wheel to load its size into the stance lab.</p></div></div>
+    <div class="matches" id="m-list"></div>
+  </section>
+
+  <section id="package" style="padding-bottom: clamp(56px, 8vw, 110px)">
+    <div class="head"><div><span class="tag">Wheel &amp; tire package</span><h2>Your build, totaled.</h2></div></div>
+    <div class="package">
+      <div class="pkg">
+        <span class="tag" id="p-name">Select a wheel above</span>
+        <div class="lines">
+          <div><span id="p-wheels">4 × wheel</span><span id="p-wheels-amt">$0</span></div>
+          <div class="free"><span>Mount &amp; balance</span><span>Free</span></div>
+          <div class="free"><span>TPMS &amp; lug nuts install</span><span>Included</span></div>
+          <div><span>Tires</span><span>Chosen at checkout</span></div>
+        </div>
+        <div class="total"><span class="tag">Wheels subtotal</span><b id="p-total">$0</b></div>
+        <a class="btn" href="https://fitmentlabs.com/collections/wheels">Continue to tires →</a>
+      </div>
+      <div class="fin-card">
+        <span class="tag red">Financing</span>
+        <h3>Ride now. Pay over 100 days.</h3>
+        <ul><li>$0–$40 down</li><li>100 days no interest / same as cash</li><li>No credit check</li><li>As low as 0% APR</li></ul>
+        <a class="btn ghost" href="https://fitmentlabs.com/pages/financing">See financing options</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof">
+    <div class="trust">
+      <div><b>4.9★</b><span class="tag">2,860+ verified reviews</span></div>
+      <div><b>18,420+</b><span class="tag">Verified builds</span></div>
+      <div><b>42K+</b><span class="tag">Setups reviewed</span></div>
+      <div><b>24/7</b><span class="tag">Specialist support</span></div>
+    </div>
+    <div class="quotes">
+      <figure class="q"><blockquote>“Perfect fitment and the support team actually knows their stuff. The package arrived ready to bolt on.”</blockquote><figcaption><b>Drew M.</b>2022 Ram 1500 · Fuel Rebel 20×10</figcaption></figure>
+      <figure class="q"><blockquote>“Third set of wheels I’ve ordered here. Always spot on with the fitment and zero surprises.”</blockquote><figcaption><b>Jessica R.</b>2019 Ford F-150 · Vossen HF-5 20×9</figcaption></figure>
+      <figure class="q"><blockquote>“The gallery made the stance easy to picture. Dialed in exactly how I wanted with no rubbing.”</blockquote><figcaption><b>Tyler S.</b>2021 Toyota Tacoma · Ferrada FR4 18×9</figcaption></figure>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Fitment Lab · Wheels. Tires. Fitment. Dialed in.</span>
+    <span>Specialists 24/7 · <b>972-927-0649</b> · abe@fitmentlabs.com</span>
+    <span>Redesign concept · stance figures are estimates</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const IN = 25.4, FENDER_GAP = 30; // est. mm from stock outer lip to fender
+  // Typical OE setups (editable estimates)
+  const VEH = [
+    { name: '2019+ Ram 1500', dia: 20, wid: 9, off: 19, bp: '6×139.7' },
+    { name: '2021+ Ford F-150', dia: 20, wid: 8.5, off: 44, bp: '6×135' },
+    { name: '2019+ Chevy Silverado 1500', dia: 20, wid: 9, off: 28, bp: '6×139.7' },
+    { name: '2016–23 Toyota Tacoma', dia: 17, wid: 7.5, off: 30, bp: '6×139.7' },
+    { name: '2018+ Jeep Wrangler JL', dia: 17, wid: 7.5, off: 44, bp: '5×127' },
+  ];
+  const P = [
+    ['XD', 'Colossus', 20, 10, -18, '6×135', 532, 'p-xd-colossus.webp'],
+    ['Fuel 1PC', 'Ascend', 17, 8.5, 25, '5×127', 320, 'p-fuel-ascend.webp'],
+    ['Black Rhino', 'Graz', 17, 8.5, 0, '6×139.7', 423, 'p-blackrhino-graz.webp'],
+    ['Asanti Black', 'Viceroy', 20, 9, 27, '5×112', 530, 'p-asanti-viceroy.webp'],
+    ['Motegi', 'MR151', 18, 9.5, 15, '5×114.3', 268, 'p-motegi-mr151.webp'],
+    ['OE Wheels', 'CV43', 22, 9, null, null, 277, 'p-cv43.webp'],
+  ];
+  let v = VEH[1], pick = null;
+  const s = { dia: 20, wid: 10, off: -18 };
+
+  $('veh').replaceChildren(...VEH.map((x, i) => new Option(x.name, i)));
+  $('veh').value = '1';
+  $('veh').addEventListener('change', e => { v = VEH[+e.target.value]; renderAll(); });
+  ['dia', 'wid', 'off'].forEach(k => $(k).addEventListener('input', e => { s[k] = +e.target.value; render(); }));
+
+  const lips = (w, o) => ({ outer: w * IN / 2 - o, inner: w * IN / 2 + o });
+  const mm = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(Math.round(n)) + ' mm';
+  const inch = n => (Math.round(n / IN * 100) / 100).toFixed(2) + '"';
+
+  function render() {
+    $('dia').value = s.dia; $('wid').value = s.wid; $('off').value = s.off;
+    $('o-dia').textContent = s.dia + '"'; $('o-wid').textContent = s.wid + '"'; $('o-off').textContent = (s.off > 0 ? '+' : '') + s.off;
+    $('st-size').textContent = v.dia + '×' + v.wid; $('st-off').textContent = (v.off > 0 ? '+' : '') + v.off; $('st-bp').textContent = v.bp;
+    const a = lips(v.wid, v.off), b = lips(s.wid, s.off);
+    const poke = b.outer - a.outer, inner = b.inner - a.inner, beyond = poke - FENDER_GAP;
+    $('r-poke').textContent = mm(poke); $('r-inner').textContent = mm(inner);
+    $('r-bs').textContent = inch(b.inner); $('r-wide').textContent = mm((s.wid - v.wid) * IN);
+
+    let chip, color, title, text;
+    if (inner > 15) { chip = 'Check clearance'; color = 'var(--bad)'; title = 'Too far inboard'; text = `The inner lip sits ${Math.round(inner)} mm closer to the suspension than stock. Expect rubbing on control arms or brakes. Try a lower offset.`; }
+    else if (beyond > 25) { chip = 'Aggressive'; color = 'var(--bad)'; title = 'Aggressive poke'; text = `About ${Math.round(beyond)} mm past the fender. Plan on fender flares, and possibly trimming or a lift to avoid rubbing at full lock.`; }
+    else if (beyond > 0) { chip = 'Mild poke'; color = 'var(--warn)'; title = 'Mild poke'; text = `Roughly ${Math.round(beyond)} mm past the fender. A popular street look; a leveling kit helps with bigger tires.`; }
+    else if (beyond > -20) { chip = 'Flush'; color = 'var(--ok)'; title = 'Flush fitment'; text = 'The wheel face sits close to the fender line. Clean look, no trimming expected with a stock-size tire.'; }
+    else { chip = 'Tucked'; color = 'var(--ok)'; title = 'Tucked'; text = 'Sits inside the fender like stock or deeper. Zero rubbing risk, subtler stance.'; }
+    $('v-chip').textContent = chip; $('v-chip').style.color = color; $('v-title').textContent = title; $('v-text').textContent = text;
+    draw(a, b, color);
+    document.querySelectorAll('.m').forEach(el => el.classList.toggle('dim', el.dataset.bp && el.dataset.bp !== v.bp));
+  }
+
+  function draw(a, b, color) {
+    // Drawn to scale: 0.55 px per mm, hub face at x=230, wheel centered at y=200
+    const k = 0.55, hx = 230, cy = 200;
+    const rect = (l, d, attrs) => { const x = hx - l.inner * k, w = (l.inner + l.outer) * k, h = d * IN * k; return `<rect x="${x.toFixed(1)}" y="${(cy - h / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" ${attrs}/>`; };
+    const fx = hx + (a.outer + FENDER_GAP) * k, sx = hx - (a.inner + 25) * k;
+    let g = '';
+    for (let x = 10; x < 520; x += 40) g += `<line x1="${x}" y1="20" x2="${x}" y2="380" stroke="#1C1F24"/>`;
+    g += `<line x1="${sx}" y1="40" x2="${sx}" y2="360" stroke="#8B9099" stroke-width="1" stroke-dasharray="2 6"/><text class="axis" x="${sx - 6}" y="34" text-anchor="end">SUSPENSION</text>`;
+    g += `<line x1="${hx}" y1="30" x2="${hx}" y2="370" stroke="#EDEEF0" stroke-width="1.5"/><text class="axis" x="${hx}" y="22" text-anchor="middle">HUB FACE</text>`;
+    g += `<path d="M${fx} 60 L${fx} 150" stroke="#F5B83D" stroke-width="3"/><path d="M${fx - 40} 44 Q${fx} 44 ${fx} 60" fill="none" stroke="#F5B83D" stroke-width="3"/><text class="axis" x="${fx + 8}" y="104" fill="#F5B83D">FENDER</text>`;
+    g += rect(a, v.dia, 'fill="none" stroke="#8B9099" stroke-width="1.5" stroke-dasharray="5 5"');
+    g += rect(b, s.dia, 'fill="rgba(224,32,43,0.12)" stroke="#E0202B" stroke-width="2.5"');
+    g += `<line x1="${hx - 12}" y1="${cy}" x2="${hx + 12}" y2="${cy}" stroke="#EDEEF0"/>`;
+    const ox = hx + b.outer * k;
+    g += `<line x1="${hx + a.outer * k}" y1="376" x2="${ox}" y2="376" stroke="${color}" stroke-width="3"/><text class="axis" x="${Math.max(ox, hx + a.outer * k) + 8}" y="380" fill="${color}">POKE ${mm(b.outer - a.outer)}</text>`;
+    $('section').innerHTML = g;
+    $('section').setAttribute('aria-label', `New ${s.dia}×${s.wid} wheel at ${s.off} offset sits ${mm(b.outer - a.outer)} outboard and ${mm(b.inner - a.inner)} inboard compared with the stock ${v.dia}×${v.wid} wheel.`);
+  }
+
+  function renderAll() {
+    $('m-title').textContent = `Wheels for ${v.bp}.`;
+    render();
+  }
+
+  $('m-list').replaceChildren(...P.map(([brand, name, d, w, o, bp, price, img]) => {
+    const el = document.createElement('article'); el.className = 'm'; if (bp) el.dataset.bp = bp;
+    el.innerHTML = `<div class="m-img"><span class="chip fit" style="color:var(--ok)">In stock</span><img src="assets/${img}" alt="${brand} ${name} wheel"></div>
+      <div class="m-body"><span class="tag">${brand}</span><h3>${name}</h3><div class="spec">${d}×${w}${o !== null ? ' · ' + (o > 0 ? '+' : '') + o + ' mm' : ''}${bp ? ' · ' + bp : ''}</div>
+      <div class="row"><b>$${price}</b><span>per wheel</span></div><button type="button">Load into lab</button></div>`;
+    el.querySelector('button').addEventListener('click', () => {
+      s.dia = d; s.wid = w; if (o !== null) s.off = o; pick = { brand, name, price, d, w };
+      $('p-name').textContent = `${brand} ${name} · ${d}×${w}`;
+      $('p-wheels').textContent = `4 × ${brand} ${name}`; $('p-wheels-amt').textContent = '$' + (price * 4).toLocaleString();
+      $('p-total').textContent = '$' + (price * 4).toLocaleString();
+      render(); $('lab').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    });
+    return el;
+  }));
+
+  // Start on a real build: XD Colossus (6×135) on a 2021+ F-150
+  pick = P[0];
+  $('p-name').textContent = 'XD Colossus · 20×10'; $('p-wheels').textContent = '4 × XD Colossus'; $('p-wheels-amt').textContent = '$2,128'; $('p-total').textContent = '$2,128';
+  renderAll();
+})();
+</script>

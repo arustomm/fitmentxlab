@@ -1,0 +1,347 @@
+<title>Fitment Lab Showroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #E8E9EB;
+    --paper-2: #F4F5F6;
+    --white: #FFFFFF;
+    --ink: #111214;
+    --ink-2: #2B2D31;
+    --muted: #6B6E75;
+    --line: #CDCFD3;
+    --red: #C8102E;
+    --display: "Archivo", "Arial Black", Arial, sans-serif;
+    --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+    --mono: "DM Mono", ui-monospace, Menlo, monospace;
+    --gutter: clamp(16px, 4vw, 48px);
+    --max: 1320px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+  h1, h2, h3 { font-family: var(--display); font-stretch: 125%; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: .9; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  .label { font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+  .topline { background: var(--ink); color: #E8E9EB; font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: center; padding: 10px var(--gutter); }
+  .topline b { color: #fff; font-weight: 500; border-bottom: 1px solid var(--red); }
+
+  .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(232,233,235,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 64px; gap: 16px; }
+  .nav nav { display: flex; gap: 22px; font: 600 13px/1 var(--body); }
+  .nav nav a { text-decoration: none; }
+  .nav nav a:hover { color: var(--red); }
+  .nav .right { justify-content: flex-end; }
+  .logo { font: 900 22px/1 var(--display); font-stretch: 125%; letter-spacing: -0.02em; text-decoration: none; text-transform: uppercase; }
+  .logo span { color: var(--red); }
+
+  /* Hero */
+  .hero { padding-block: clamp(36px, 6vw, 80px) 0; position: relative; }
+  .hero-top { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+  .hero h1 { font-size: clamp(52px, 10.5vw, 168px); font-weight: 900; }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero-meta { max-width: 32ch; display: grid; gap: 14px; padding-bottom: 10px; }
+  .hero-meta p { color: var(--ink-2); font-size: 17px; }
+  .stage { position: relative; display: grid; grid-template-columns: 1fr minmax(260px, 520px) 1fr; align-items: center; margin-top: clamp(16px, 3vw, 32px); }
+  .stage::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); }
+  .wheel { position: relative; grid-column: 2; aspect-ratio: 1; }
+  .wheel img { width: 100%; filter: drop-shadow(0 40px 50px rgba(17,18,20,.28)); will-change: transform; }
+  .callout { position: absolute; display: grid; gap: 4px; font: 500 12px/1.2 var(--mono); }
+  .callout b { font: 800 clamp(22px, 2.6vw, 34px)/1 var(--display); font-stretch: 125%; }
+  .callout::before { content: ""; position: absolute; height: 1px; background: var(--ink); width: clamp(30px, 6vw, 90px); top: 50%; }
+  .c1 { right: calc(100% + 16px); top: 16%; text-align: right; }
+  .c1::before { left: calc(100% + 8px); }
+  .c2 { left: calc(100% + 16px); top: 44%; }
+  .c2::before { right: calc(100% + 8px); }
+  .c3 { right: calc(100% + 16px); top: 74%; text-align: right; }
+  .c3::before { left: calc(100% + 8px); }
+
+  /* Sentence finder */
+  .finder { background: var(--white); border: 1px solid var(--line); margin-top: clamp(28px, 4vw, 48px); padding: clamp(20px, 3vw, 36px); display: grid; gap: 20px; box-shadow: 0 30px 60px -40px rgba(17,18,20,.35); }
+  .sentence { font: 700 clamp(26px, 3.6vw, 50px)/1.25 var(--display); font-stretch: 110%; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+  .sentence select { font: inherit; letter-spacing: inherit; color: var(--red); background: none; border: 0; border-bottom: 3px solid var(--ink); padding: 0 4px; cursor: pointer; appearance: none; -webkit-appearance: none; border-radius: 0; max-width: 100%; }
+  .sentence select:focus { outline: none; border-bottom-color: var(--red); }
+  .result { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid var(--line); }
+  .facts { display: flex; flex-wrap: wrap; gap: 12px 32px; }
+  .fact { display: grid; gap: 4px; }
+  .fact b { font: 500 20px/1 var(--mono); font-variant-numeric: tabular-nums; }
+  .btn { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; text-decoration: none; font: 700 14px/1 var(--body); letter-spacing: .02em; padding: 16px 24px; border: 0; cursor: pointer; transition: background .2s; }
+  .btn:hover { background: var(--red); }
+  .btn .arr { transition: transform .2s; }
+  .btn:hover .arr { transform: translateX(4px); }
+
+  .strip { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding-block: 22px; border-block: 1px solid var(--line); margin-top: clamp(40px, 6vw, 72px); font: 500 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .strip span b { color: var(--red); font-weight: 500; }
+
+  section.block { padding-block: clamp(64px, 9vw, 128px); }
+  .head { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+  .head h2 { font-size: clamp(40px, 6vw, 96px); margin-top: 14px; }
+  .link { font: 700 14px/1 var(--body); text-decoration: none; display: inline-flex; gap: 8px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; white-space: nowrap; }
+  .link:hover { color: var(--red); border-color: var(--red); }
+
+  /* Categories as index list */
+  .index { border-top: 2px solid var(--ink); }
+  .row { display: grid; grid-template-columns: 90px 1fr auto 200px; gap: 24px; align-items: center; padding-block: 18px; border-bottom: 1px solid var(--line); text-decoration: none; position: relative; }
+  .row .n { font: 500 13px/1 var(--mono); color: var(--muted); }
+  .row h3 { font-size: clamp(36px, 6vw, 88px); transition: transform .4s cubic-bezier(.2,.8,.2,1), color .2s; }
+  .row .cnt { font: 500 13px/1.3 var(--mono); color: var(--muted); text-align: right; }
+  .row .thumb { width: 200px; aspect-ratio: 16/10; overflow: hidden; background: var(--ink); }
+  .row .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .row:hover h3 { transform: translateX(14px); color: var(--red); }
+  .row:hover .thumb img { transform: scale(1.08); }
+
+  /* Product rail */
+  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr); gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; background: var(--line); border: 1px solid var(--line); }
+  .card { scroll-snap-align: start; background: var(--paper-2); padding: 22px; display: grid; gap: 12px; align-content: start; text-decoration: none; }
+  .card .top { display: flex; justify-content: space-between; font: 500 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .card .top b { color: #1E8E4E; font-weight: 500; }
+  .card img { width: 82%; margin: 12px auto; transition: transform .8s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 18px 20px rgba(17,18,20,.2)); }
+  .card:hover img { transform: rotate(-20deg); }
+  .card h3 { font-size: 30px; }
+  .spec-line { font: 500 12px/1.4 var(--mono); color: var(--ink-2); }
+  .card .price { display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; border-top: 1px solid var(--line); }
+  .card .price b { font: 800 26px/1 var(--display); font-stretch: 110%; }
+  .card .price span { font: 500 12px/1 var(--mono); color: var(--muted); }
+
+  /* Editorial review */
+  .review { background: var(--ink); color: #F4F5F6; }
+  .review .wrap { display: grid; grid-template-columns: 1fr 2.2fr; gap: clamp(24px, 5vw, 80px); padding-block: clamp(64px, 9vw, 128px); }
+  .rating b { font: 900 clamp(96px, 12vw, 180px)/.8 var(--display); font-stretch: 125%; display: block; }
+  .rating .stars { color: var(--red); font-size: 22px; letter-spacing: 3px; margin-top: 16px; }
+  .rating p { font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #A9ACB2; margin-top: 8px; }
+  .big-quote { margin: 0; display: grid; gap: 28px; }
+  .big-quote blockquote { margin: 0; font: 700 clamp(28px, 3.6vw, 52px)/1.12 var(--display); font-stretch: 100%; letter-spacing: -0.02em; text-wrap: balance; }
+  .big-quote figcaption { font: 500 13px/1.5 var(--mono); color: #A9ACB2; }
+  .big-quote figcaption b { color: #fff; font-weight: 500; }
+  .dots { display: flex; gap: 8px; }
+  .dots button { width: 34px; height: 4px; border: 0; background: #44474D; cursor: pointer; padding: 0; }
+  .dots button[aria-current="true"] { background: var(--red); }
+
+  .promises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); }
+  .promise { background: var(--paper-2); padding: 26px; display: grid; gap: 10px; align-content: start; }
+  .promise h3 { font-size: 20px; font-stretch: 110%; }
+  .promise p { color: var(--muted); font-size: 14px; }
+  .promise .label { color: var(--red); }
+
+  .contact { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: end; padding-top: clamp(40px, 6vw, 72px); }
+  .contact h2 { font-size: clamp(40px, 6vw, 96px); }
+  .contact .num { font: 900 clamp(40px, 6vw, 88px)/1 var(--display); font-stretch: 125%; color: var(--red); user-select: all; }
+  .contact p { color: var(--ink-2); margin-top: 12px; max-width: 42ch; }
+
+  footer { margin-top: clamp(64px, 9vw, 120px); border-top: 2px solid var(--ink); padding-block: 32px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; font: 500 12px/1.6 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .foot a { text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+  .foot nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+
+  @media (max-width: 960px) {
+    .nav .wrap { grid-template-columns: auto 1fr; }
+    .nav nav.left { display: none; }
+    .stage { grid-template-columns: 1fr; }
+    .wheel { grid-column: 1; max-width: 360px; margin-inline: auto; width: 100%; }
+    .callout { display: none; }
+    .row { grid-template-columns: 50px 1fr auto; }
+    .row .thumb { display: none; }
+    .review .wrap, .contact { grid-template-columns: 1fr; }
+    .promises { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nav nav.right a:not(.cart) { display: none; }
+    .head { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr auto; }
+    .row .n { display: none; }
+    .promises { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+<div class="topline">Financing available · <b>$0–$40 down</b> · 100 days same as cash · No credit check</div>
+
+<header class="nav">
+  <div class="wrap">
+    <nav class="left" aria-label="Shop"><a href="#categories">Wheels</a><a href="#categories">Tires</a><a href="#categories">Suspension</a><a href="#lineup">Brands</a></nav>
+    <a class="logo" href="#top">Fitment<span>Lab</span></a>
+    <nav class="right" aria-label="Account"><a href="#reviews">Gallery</a><a href="#contact">972-927-0649</a><a class="cart" href="https://fitmentlabs.com/cart">Cart (<span id="cart">0</span>)</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1>Built to<br><em>fit.</em></h1>
+        <div class="hero-meta">
+          <span class="label">Wheels · Tires · Suspension</span>
+          <p>Over 16,000 wheels and tires, matched to your exact vehicle and checked by a specialist before they ship.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="wheel">
+          <img id="hero-wheel" src="assets/p-xd-colossus.webp" alt="XD Colossus wheel in matte black">
+          <div class="callout c1"><span class="label">Size</span><b>20×10</b></div>
+          <div class="callout c2"><span class="label">Bolt pattern</span><b>6×135</b></div>
+          <div class="callout c3"><span class="label">Offset</span><b>−18 mm</b></div>
+        </div>
+      </div>
+
+      <div class="finder" id="finder">
+        <span class="label">Find your fitment</span>
+        <div class="sentence">
+          <span>I drive a</span>
+          <select id="s-year" aria-label="Year"></select>
+          <select id="s-make" aria-label="Make"></select>
+          <select id="s-model" aria-label="Model"></select>
+        </div>
+        <div class="result">
+          <div class="facts">
+            <div class="fact"><span class="label">Bolt pattern</span><b id="r-bp">—</b></div>
+            <div class="fact"><span class="label">Center bore</span><b id="r-bore">—</b></div>
+            <div class="fact"><span class="label">Verified sizes</span><b id="r-dia">—</b></div>
+            <div class="fact"><span class="label">Trims</span><b id="r-trims">—</b></div>
+          </div>
+          <a class="btn" id="r-shop" href="https://fitmentlabs.com/collections/wheels">Show wheels that fit <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span><b>4.9★</b> 2,860+ verified reviews</span>
+        <span><b>18,420+</b> verified builds</span>
+        <span><b>Free</b> mount &amp; balance on packages</span>
+        <span><b>Next-day</b> shipping available</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="categories">
+    <div class="wrap">
+      <div class="head"><div><span class="label">Shop by category</span><h2>The catalog.</h2></div><a class="link" href="https://fitmentlabs.com/collections">All categories →</a></div>
+      <div class="index">
+        <a class="row" href="https://fitmentlabs.com/collections/wheels"><span class="n">01</span><h3>Wheels</h3><span class="cnt">14,552<br>products</span><span class="thumb"><img src="assets/wheels.webp" alt=""></span></a>
+        <a class="row" href="https://fitmentlabs.com/collections/tires"><span class="n">02</span><h3>Tires</h3><span class="cnt">1,572<br>products</span><span class="thumb"><img src="assets/tires.webp" alt=""></span></a>
+        <a class="row" href="https://fitmentlabs.com/collections/suspension"><span class="n">03</span><h3>Suspension</h3><span class="cnt">Lift &amp;<br>leveling</span><span class="thumb"><img src="assets/suspension.webp" alt=""></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="lineup" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><span class="label">Ready to ship</span><h2>Popular fitments.</h2></div><a class="link" href="https://fitmentlabs.com/collections/wheels">Shop all wheels →</a></div>
+      <div class="rail" id="rail" tabindex="0" aria-label="Popular wheels, scroll sideways"></div>
+    </div>
+  </section>
+
+  <section class="review" id="reviews">
+    <div class="wrap">
+      <div class="rating"><b>4.9</b><div class="stars" aria-label="4.9 out of 5">★★★★★</div><p>2,860+ verified reviews<br>18,420+ verified builds</p></div>
+      <figure class="big-quote" aria-live="polite">
+        <blockquote id="q-text"></blockquote>
+        <figcaption id="q-who"></figcaption>
+        <div class="dots" id="q-dots" role="group" aria-label="Choose review"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top: clamp(48px, 7vw, 96px)">
+    <div class="promises">
+      <div class="promise"><span class="label">Guarantee</span><h3>Fitment guaranteed</h3><p>Every setup is reviewed by a specialist before fulfillment.</p></div>
+      <div class="promise"><span class="label">Included</span><h3>Mount &amp; balance</h3><p>Free with wheel and tire packages, plus TPMS and lugs.</p></div>
+      <div class="promise"><span class="label">24/7</span><h3>Specialist support</h3><p>Real enthusiasts with real answers on diameter, width and offset.</p></div>
+      <div class="promise"><span class="label">Delivered</span><h3>Ready to install</h3><p>Bolt on at home or at your local shop.</p></div>
+    </div>
+    <div class="contact" id="contact">
+      <div><span class="label">Talk to a specialist</span><h2 style="margin-top:14px">Not sure<br>what fits?</h2></div>
+      <div><span class="num">972-927-0649</span><p>Call or message us any time with your year, make and model. A specialist will dial in the setup with you.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Fitment Lab · Wheels. Tires. Fitment. Dialed in.</span>
+    <nav aria-label="Footer"><a href="https://fitmentlabs.com/pages/financing">Financing</a><a href="https://fitmentlabs.com/policies/shipping-policy">Shipping</a><a href="https://fitmentlabs.com/policies/refund-policy">Returns</a><a href="https://fitmentlabs.com/pages/contact">Contact</a></nav>
+    <span>Redesign concept · links go to the live store</span>
+  </div>
+</footer>
+
+<script id="fitment-data" type="application/json">__FITMENT_DATA__</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('fitment-data').textContent);
+  const $ = id => document.getElementById(id);
+  const gens = D.gens.map(g => ({ make: D.makes[g[0]], model: D.models[g[0]][g[1]], y0: g[2], y1: g[3], bp: D.bps[g[4]], dia: g[5], bore: g[6], trims: g[7] }));
+  const years = [...new Set(gens.flatMap(g => Array.from({ length: g.y1 - g.y0 + 1 }, (_, i) => g.y0 + i)))].sort((a, b) => b - a);
+  const st = { year: '2022', make: 'Ram', model: '1500' };
+  const fill = (el, list, v) => { el.replaceChildren(...list.map(x => new Option(x, x))); if (list.includes(v)) el.value = v; };
+  function update() {
+    fill($('s-year'), years.map(String), st.year); st.year = $('s-year').value;
+    const y = +st.year, inY = gens.filter(g => g.y0 <= y && y <= g.y1);
+    fill($('s-make'), [...new Set(inY.map(g => g.make))].sort(), st.make); st.make = $('s-make').value;
+    fill($('s-model'), [...new Set(inY.filter(g => g.make === st.make).map(g => g.model))].sort(), st.model); st.model = $('s-model').value;
+    const g = inY.find(x => x.make === st.make && x.model === st.model);
+    fit();
+    $('r-bp').textContent = g.bp;
+    $('r-bore').textContent = g.bore.toFixed(1) + ' mm';
+    $('r-dia').textContent = g.dia.map(d => d + '"').join(' · ');
+    $('r-trims').textContent = g.trims.length;
+    $('r-trims').title = g.trims.join(', ');
+    $('r-shop').firstChild.textContent = `Show ${g.bp} wheels `;
+  }
+  // Size each select to its chosen option so the sentence reads naturally
+  const ctx = document.createElement('canvas').getContext('2d');
+  function fit() {
+    ['s-year', 's-make', 's-model'].forEach(id => {
+      const el = $(id), cs = getComputedStyle(el);
+      ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      el.style.width = Math.ceil(ctx.measureText(el.value).width * 1.12 + 16) + 'px';
+    });
+  }
+  document.fonts && document.fonts.ready.then(fit);
+  ['year', 'make', 'model'].forEach(k => $('s-' + k).addEventListener('change', e => { st[k] = e.target.value; update(); }));
+  update();
+
+  // Wheel rotates as you scroll
+  const w = $('hero-wheel');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    addEventListener('scroll', () => { w.style.transform = `rotate(${scrollY * 0.12}deg)`; }, { passive: true });
+  }
+
+  const P = [
+    ['XD', 'Colossus', '20×10', '6×135', '−18', 532, 'p-xd-colossus.webp'],
+    ['Fuel 1PC', 'Ascend', '17×8.5', '5×127', '+25', 320, 'p-fuel-ascend.webp'],
+    ['Asanti Black', 'Viceroy', '20×9', '5×112', '+27', 530, 'p-asanti-viceroy.webp'],
+    ['Black Rhino', 'Graz', '17×8.5', '6×139.7', '+0', 423, 'p-blackrhino-graz.webp'],
+    ['Motegi', 'MR151', '18×9.5', '5×114.3', '+15', 268, 'p-motegi-mr151.webp'],
+    ['OE Wheels', 'CV43', '22×9', '', '', 277, 'p-cv43.webp'],
+  ];
+  $('rail').replaceChildren(...P.map(([b, n, s, bp, off, price, img]) => {
+    const a = document.createElement('a'); a.className = 'card'; a.href = 'https://fitmentlabs.com/collections/wheels';
+    a.innerHTML = `<div class="top"><span>${b}</span><b>● In stock</b></div><img src="assets/${img}" alt="${b} ${n} wheel"><h3>${n}</h3>
+      <div class="spec-line">${[s, bp, off && off + ' mm'].filter(Boolean).join(' · ')}</div><div class="price"><b>$${price}</b><span>per wheel</span></div>`;
+    return a;
+  }));
+
+  const Q = [
+    ['Perfect fitment and the support team actually knows their stuff. The package arrived ready to bolt on.', 'Drew M.', '2022 Ram 1500 · Fuel Rebel 20×10'],
+    ['Third set of wheels I’ve ordered here. Always spot on with the fitment and zero surprises.', 'Jessica R.', '2019 Ford F-150 · Vossen HF-5 20×9'],
+    ['The gallery made the stance easy to picture. Dialed in exactly how I wanted with no rubbing.', 'Tyler S.', '2021 Toyota Tacoma · Ferrada FR4 18×9'],
+  ];
+  let qi = 0, timer;
+  const show = i => {
+    qi = i; $('q-text').textContent = '“' + Q[i][0] + '”';
+    $('q-who').innerHTML = `<b>${Q[i][1]}</b> · ${Q[i][2]} · Verified build`;
+    [...$('q-dots').children].forEach((d, j) => d.setAttribute('aria-current', j === i));
+  };
+  $('q-dots').replaceChildren(...Q.map((q, i) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Review from ' + q[1]); b.onclick = () => { clearInterval(timer); show(i); }; return b; }));
+  show(0);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => show((qi + 1) % Q.length), 6000);
+})();
+</script>
