@@ -1,0 +1,35 @@
+# Copy to config.toml and adjust. Secrets go in .env, never here.
+
+[agent]
+mode = "practice"                       # "practice" = OANDA demo (sandbox). "live" is gated, see README.
+instruments = ["EUR_USD", "GBP_USD", "USD_JPY"]
+granularity = "H1"                      # OANDA granularity: M15, M30, H1, H4, D ...
+poll_seconds = 30                       # how often the agent wakes to watch the market
+candle_count = 600                      # history the strategy sees each bar (same in backtest and live)
+data_dir = "data"                       # journal.sqlite lives here; touch data/STOP to kill the agent
+close_on_halt = true                    # flatten positions when a circuit breaker trips
+
+[strategy]
+name = "ema_trend"
+fast = 20
+slow = 50
+trend = 200
+atr_period = 14
+stop_atr = 2.0
+target_atr = 3.0
+
+[risk]
+risk_per_trade_pct = 0.5                # equity lost if a stop is hit
+max_open_trades = 3
+max_daily_loss_pct = 2.0                # stop for the rest of the UTC day
+max_drawdown_pct = 10.0                 # stop until `fxagent resume`
+max_spread_pips = 2.5
+max_leverage = 10.0
+live_risk_multiplier = 0.5              # live starts at half the practice risk
+
+[gate]                                  # what "proven profitable" means before live is allowed
+min_trades = 50
+min_days = 30
+min_profit_factor = 1.3
+max_drawdown_pct = 10.0
+min_expectancy_tstat = 2.0
